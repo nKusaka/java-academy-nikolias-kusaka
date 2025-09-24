@@ -6,6 +6,7 @@ import java.util.Arrays;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        boolean isHappy = true;
         System.out.println("Hello World!");
 
         //Primitive variables
@@ -15,5 +16,21 @@ public class Main {
         int age = 23;
         String firstName = "Nikolias";
         String lastName = "Kusaka";
+        favoriteColor = "blue";
+
+        System.out.println(favoriteColor);
+
+        if(isHappy && hadBreakfast)
+        {
+            System.out.println("Nice job");
+        }
+        else if(isHappy && !hadBreakfast)
+        {
+            System.out.println("You could be hungry");
+        }
+        else if(!isHappy && !hadBreakfast)
+        {
+            System.out.println("Do something about that ");
+        }
     }
 }
