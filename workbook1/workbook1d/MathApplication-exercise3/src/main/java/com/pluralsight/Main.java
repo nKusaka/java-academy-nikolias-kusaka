@@ -55,5 +55,19 @@ public class Main {
 
         // Create random number generator Step 7
         System.out.println((int)(Math.random() * 2));
+
+        // Initialize Variables Step 8
+        int minutesInHour = 60;
+        int hoursInDay = 24;
+        int days = 24;
+        int secondsInMinute = 60;
+        int millisecondsInSeconds = 1000;
+        int totalMinutes;
+        int totalMilliseconds;
+
+        totalMinutes = days * hoursInDay * minutesInHour;
+        totalMilliseconds = days * hoursInDay * minutesInHour * secondsInMinute * millisecondsInSeconds;
+
+        System.out.println("There are " + totalMinutes + " minutes in a 24 days, and " + totalMilliseconds + " milliseconds in 24 days");
     }
 }
