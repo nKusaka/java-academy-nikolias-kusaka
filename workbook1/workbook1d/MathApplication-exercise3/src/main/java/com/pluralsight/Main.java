@@ -21,5 +21,14 @@ public class Main {
         // Which price is smaller? Step 2
         System.out.println("The smaller price is $" + Math.min(carPrice, truckPrice));
 
+        // Initialize Variables Step 3
+        double circleRadius = 7.25;
+        double circleArea;
+
+        // Find circle area Step 3
+        circleArea = circleRadius * circleRadius * Math.PI;
+
+        // Print circle area Step 3
+        System.out.println("The area of the circle is " + circleArea);
     }
 }
