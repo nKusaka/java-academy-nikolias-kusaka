@@ -5,15 +5,21 @@ package com.pluralsight;
 public class Main {
     public static void main(String[] args) {
 
-        // Initialize Variables
+        // Initialize Variables Step 1
         int bobSalary = 40000;
         int garySalary = 50000;
         int highestSalary;
 
-        // Which salary is higher?
+        // Which salary is higher? Step 1
         highestSalary = Math.max(bobSalary, garySalary);
         System.out.println("The highest salary is $" + highestSalary);
 
+        // Initialize Variables Step 2
+        int carPrice = 20000;
+        int truckPrice = 30000;
+
+        // Which price is smaller? Step 2
+        System.out.println("The smaller price is $" + Math.min(carPrice, truckPrice));
 
     }
 }
