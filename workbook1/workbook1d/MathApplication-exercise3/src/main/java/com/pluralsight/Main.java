@@ -38,5 +38,13 @@ public class Main {
         System.out.println(Math.sqrt(number));
 
         // Initialize Variables Step 5
+        int pointXOne = 5;
+        int pointYOne = 10;
+        int pointXTwo = 85;
+        int pointYTwo = 50;
+
+        double distance = Math.sqrt((pointXTwo - pointXOne) * (pointXTwo - pointXOne) + (pointYTwo - pointYOne) * (pointYTwo - pointYOne));
+        // Distance between points (5, 10) and (85, 50)
+        System.out.println("The distance between the points (5, 10) and (85, 50) is " + distance);
     }
 }
