@@ -7,5 +7,13 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
+
+        //Primitive variables
+        String favoriteColor = "red";
+        String favoriteArtist = "J Cole";
+        boolean hadBreakfast = false;
+        int age = 23;
+        String firstName = "Nikolias";
+        String lastName = "Kusaka";
     }
 }
