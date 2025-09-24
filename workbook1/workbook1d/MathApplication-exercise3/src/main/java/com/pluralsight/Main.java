@@ -44,13 +44,16 @@ public class Main {
         int pointYTwo = 50;
 
         double distance = Math.sqrt((pointXTwo - pointXOne) * (pointXTwo - pointXOne) + (pointYTwo - pointYOne) * (pointYTwo - pointYOne));
-        // Distance between points (5, 10) and (85, 50)
+        // Distance between points (5, 10) and (85, 50) Step 5
         System.out.println("The distance between the points (5, 10) and (85, 50) is " + distance);
 
         // Initialize Variables Step 6
         double absoluteNumber = -3.8;
 
-        // Absolute value of -3.8
+        // Absolute value of -3.8 Step 6
         System.out.println("The absolute value of -3.8 is " + Math.abs(absoluteNumber));
+
+        // Create random number generator Step 7
+        System.out.println((int)(Math.random() * 2));
     }
 }
