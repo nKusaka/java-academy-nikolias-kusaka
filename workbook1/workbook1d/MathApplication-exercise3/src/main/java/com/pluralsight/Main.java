@@ -30,5 +30,13 @@ public class Main {
 
         // Print circle area Step 3
         System.out.println("The area of the circle is " + circleArea);
+
+        // Initialize Variables Step 4
+        double number = 5.0;
+
+        // Find square root of number Step 4
+        System.out.println(Math.sqrt(number));
+
+        // Initialize Variables Step 5
     }
 }
