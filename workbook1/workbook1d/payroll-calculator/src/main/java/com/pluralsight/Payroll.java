@@ -18,7 +18,21 @@ public class Payroll {
         float payRate = read.nextFloat();
 
         // Output
-        System.out.printf("Hello " + fullName + "\nYour Gross Pay: $%.2f", hoursWorked * payRate);
-        System.out.println("\n");
+        //System.out.printf("Hello " + fullName + "\nYour Gross Pay: $%.2f", hoursWorked * payRate);
+        //System.out.println("\n");
+
+        // What if user worked over 40 hours and deserves overtime pay?
+
+        if (hoursWorked > 40)
+        {
+            float overtimeHours = hoursWorked - 40;
+            System.out.printf("Hello " + fullName + ", you had " + overtimeHours + " overtime hours this pay period.\nYour Gross Pay With Overtime: $%.2f", (hoursWorked * payRate) + (payRate * 1.5 * overtimeHours));
+            System.out.println("\n");
+        }
+        else
+        {
+            System.out.printf("Hello " + fullName + "\nYour Gross Pay: $%.2f", hoursWorked * payRate);
+            System.out.println("\n");
+        }
     }
 }
