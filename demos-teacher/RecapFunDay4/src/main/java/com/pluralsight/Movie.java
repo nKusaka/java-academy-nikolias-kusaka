@@ -2,25 +2,40 @@ package com.pluralsight;
 import java.util.Scanner;
 
 public class Movie {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        String movieTitle = "KPop Demon Hunters";
-        int numberOfFriends = 5;
-        double pizzaSlicePrice = 1.99;
-        boolean hasPopcorn = true;
+        // Variables initialized
+        Scanner scanner = new Scanner(System.in);
+        String movieTitle;
+        int numberOfFriends;
+        double pizzaPrice;
+        boolean hasPopcorn;
+        double drinkPrice;
 
-        System.out.println("We're watching " + movieTitle + " with " + numberOfFriends + " friends.");
-        System.out.println("Pizza costs " + pizzaSlicePrice + " each.");
-        System.out.println("Popcorn? " + hasPopcorn);
-        System.out.println("Total pizza cost: $" + pizzaSlicePrice * (numberOfFriends + 1));
+        // Getting user input with Scanner object
+        System.out.println("Enter what movie you would like to see: ");
+        movieTitle = scanner.nextLine();
+        System.out.println("How many people will be attending: ");
+        numberOfFriends = scanner.nextInt();
+        System.out.println("What is the price of pizza?: ");
+        pizzaPrice = scanner.nextDouble();
+        System.out.println("Do you have popcorn? (True/False): ");
+        hasPopcorn = scanner.nextBoolean();
+        // Clean up variables
+        pizzaPrice = Math.round(pizzaPrice);
+        drinkPrice = numberOfFriends * 4.99;
 
-        if (hasPopcorn)
+        // Output message
+        if (pizzaPrice * numberOfFriends > 30)
         {
-            System.out.println("Popcorn time!");
+            System.out.println("Whoa that's a lot of pizza!");
         }
         else
         {
-            System.out.println("No popcorn. :( ");
+            System.out.println("Nice budget friendly movie night");
         }
+
+        System.out.printf("Movie: " + movieTitle + " | Guests: " + numberOfFriends + " | " +
+                "Total cost: $" + (pizzaPrice + drinkPrice));
     }
 }
