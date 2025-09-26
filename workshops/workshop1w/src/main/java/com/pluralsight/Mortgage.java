@@ -21,4 +21,11 @@ public class Mortgage {
         loanLength = read.nextInt();
     }
 
+    public static double monthlyPayment(int principal, double interestRate, int loanLength) {
+        int monthlyLoanLength = loanLength * 12
+        double mortgage = principal * (interestRate * Math.pow((1 + interestRate), monthlyLoanLength) / (Math.pow((1 + interestRate), monthlyLoanLength) - 1));
+
+        return mortgage;
+    }
+
 }
