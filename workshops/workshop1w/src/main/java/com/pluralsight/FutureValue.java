@@ -26,4 +26,12 @@ public class FutureValue {
 
         return futureValue;
     }
+
+    public static double interestEarned(int principal, double futureValue) {
+        double interestEarned = futureValue - principal;
+
+        return interestEarned;
+    }
+
+
 }
