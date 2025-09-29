@@ -4,8 +4,10 @@ package com.pluralsight;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        String movieTitle = "spiderman across the spiderverse";
-
-        System.out.println(movieTitle.toUpperCase());
+        //Example 1
+        // For loop;
+        for (int i = 0; i < 3; i++) {
+            System.out.println("You guys are cool!");
+        }
     }
 }
