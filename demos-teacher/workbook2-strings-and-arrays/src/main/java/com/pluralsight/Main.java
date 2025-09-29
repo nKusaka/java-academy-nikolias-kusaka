@@ -9,5 +9,14 @@ public class Main {
         for (int i = 0; i < 3; i++) {
             System.out.println("You guys are cool!");
         }
+
+        // Example 2
+        // While loop
+        System.out.println("\nWhile loop example:");
+        int counter = 3;
+        while (counter > 0) {
+            System.out.println("Counter is: " + counter);
+            counter--; // decrease by 1
+        }
     }
 }
