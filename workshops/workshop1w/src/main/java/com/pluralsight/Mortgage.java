@@ -23,7 +23,7 @@ public class Mortgage {
         double mortgage = monthlyPayment(principal, interestRate, loanLength);
         double totalInterest = totalInterest(mortgage, loanLength, principal);
 
-        display(mortgage, totalInterest);
+        displayMortgage(mortgage, totalInterest);
     }
 
     public static double monthlyPayment(int principal, double interestRate, int loanLength) {
@@ -41,7 +41,7 @@ public class Mortgage {
         return totalInterest;
     }
 
-    public static void display(double mortgage, double totalInterest) {
+    public static void displayMortgage(double mortgage, double totalInterest) {
         System.out.printf("Your mortgage will be $%.2f" , mortgage);
         System.out.println();
         System.out.printf("Your total interest that will be paid will be $%.2f" , totalInterest);

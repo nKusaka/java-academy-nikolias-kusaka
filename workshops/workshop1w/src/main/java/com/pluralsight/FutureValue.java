@@ -22,7 +22,7 @@ public class FutureValue {
         double futureValue = futureValue(initialDeposit, interestRate, years);
         double interestEarned = interestEarned(initialDeposit, futureValue);
 
-        display(futureValue, interestEarned);
+        displayFutureValue(futureValue, interestEarned);
     }
 
     public static double futureValue(int principal, double interestRate, int years) {
@@ -37,7 +37,7 @@ public class FutureValue {
         return interestEarned;
     }
 
-    public static void display(double futureValue, double interestEarned) {
+    public static void displayFutureValue(double futureValue, double interestEarned) {
         System.out.printf("Your expected future value is: $%.2f" , futureValue);
         System.out.println();
         System.out.printf("Your expected interest earned value is: $%.2f" , interestEarned);
