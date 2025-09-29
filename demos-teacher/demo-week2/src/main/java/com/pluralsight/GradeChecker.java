@@ -11,7 +11,8 @@ public class GradeChecker {
         System.out.printf("What scored did you get on your exam?: ");
         int examScore = read.nextInt();
 
-        // Different outputs for different scores
+        // User receives a different output depending on the corresponding integer value they got
+        // > 90 = A, > 80 = B, > 70 = C, > 60 = D, < 60 = F
         if (examScore >= 90) {
             System.out.printf("You got an A! Nice job!");
         }
