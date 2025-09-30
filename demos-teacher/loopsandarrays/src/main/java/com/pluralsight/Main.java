@@ -5,32 +5,14 @@ import java.util.Scanner;
 //for loop practice
 public class Main {
     public static void main(String[] args) {
-        Scanner read = new Scanner(System.in);
+        String myEmailAddress = "rmailjard@yEARup.OrG";
 
-        for(int i = 1; i <= 5; i++){
-            if(i % 2 == 0) {
-                System.out.println(i);
-            }
+        int validation = myEmailAddress.indexOf("@");
+        String check = myEmailAddress.substring(validation+1);
+        if(myEmailAddress.substring(validation + 1).equalsIgnoreCase("yearup.org")) {
+            System.out.println("Correct e-mail address");
+        } else {
+            System.out.println("Wrong e-mail address");
         }
-
-        int j = 10;
-        while(j >= 1) {
-            System.out.println("You have " + j + " seconds left");
-            try {
-                Thread.sleep(1000);
-            }
-            catch (InterruptedException e){
-                e.printStackTrace();
-            }
-            j--;
-
-        }
-        String exitLoop;
-        do {
-            System.out.printf("Type exit to exit loop: ");
-            exitLoop = read.nextLine();
-        }
-        while(!exitLoop.contains("exit"));
-
     }
 }
