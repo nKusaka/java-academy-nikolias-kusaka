@@ -7,14 +7,12 @@ public class FullNameParser {
 
         System.out.printf("Please enter your name first and last (optionally with middle initial): ");
         String fullName = read.nextLine();
+        fullName.trim();
 
-        String firstName = fullNameParser(fullName);
 
-    }
+        System.out.println("First name: " + fullName.substring(0, fullName.indexOf(' ')));
 
-    public static String fullNameParser(String name) {
-
-        System.out.println(name.trim().indexOf(' '));
+       System.out.println("Last name: " + lastName);
     }
 }
 
