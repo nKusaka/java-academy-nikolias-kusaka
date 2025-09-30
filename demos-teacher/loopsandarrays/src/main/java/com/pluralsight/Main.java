@@ -4,8 +4,9 @@ package com.pluralsight;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        for(int i = 0; i < 10; i ++) {
-            System.out.println((i + 1) + ". I will be a good developer ");
+        for(int i = 0; i < 81; i++) {
+            System.out.println((81 - i) + " more days left of Year Up Code academy.");
         }
+
     }
 }
