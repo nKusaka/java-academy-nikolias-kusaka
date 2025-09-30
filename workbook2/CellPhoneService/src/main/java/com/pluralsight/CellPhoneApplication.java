@@ -2,6 +2,7 @@ package com.pluralsight;
 
 public class CellPhoneApplication {
     public static void main(String[] args) {
+        CellPhoneApplication cellPhone = new CellPhoneApplication();
 
     }
 
@@ -59,7 +60,6 @@ public class CellPhoneApplication {
     public void setOwner(String owner) {
         this.owner = owner;
     }
-
 
     private int serialNumber;
     private String model;
