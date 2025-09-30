@@ -14,7 +14,7 @@ public class AddressBuilder {
         billingAddress = billingAddress(read);
         shippingAddress = shippingAddress(read);
 
-        System.out.println("\n" + fullName);
+        System.out.println("\n" + fullName + "\n");
         System.out.println(billingAddress);
         System.out.println(shippingAddress);
 
