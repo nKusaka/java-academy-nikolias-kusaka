@@ -3,7 +3,9 @@ import java.util.Scanner;
 
 public class CellPhoneApplication {
     public static void main(String[] args) {
-        CellPhoneApplication cellPhone = new CellPhoneApplication();
+        CellPhoneApplication cellPhone1 = new CellPhoneApplication();
+        CellPhoneApplication cellPhone2 = new CellPhoneApplication(71231, "IPhone 16 Pro Max", "Verizon", "7076125823", "Jake");
+
         Scanner read = new Scanner(System.in);
 
         System.out.printf("What is the serial number? ");
