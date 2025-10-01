@@ -3,38 +3,18 @@ import java.util.Scanner;
 
 public class CellPhoneApplication {
     public static void main(String[] args) {
-        CellPhoneApplication cellPhone1 = new CellPhoneApplication();
+        CellPhoneApplication cellPhone1 = new CellPhoneApplication(72311, "IPhone 16 Pro Max", "Verizon", "7073721580", "Nik");
         CellPhoneApplication cellPhone2 = new CellPhoneApplication(71231, "IPhone 16 Pro Max", "Verizon", "7076125823", "Jake");
 
-        Scanner read = new Scanner(System.in);
 
-        System.out.printf("What is the serial number? ");
-        int serialNumber = read.nextInt();
-        cellPhone.setSerialNumber(serialNumber);
-        read.nextLine();
+    }
 
-        System.out.printf("What model is the phone? ");
-        String model = read.nextLine();
-        cellPhone.setModel(model);
-
-        System.out.printf("Who is the carrier? ");
-        String carrier = read.nextLine();
-        cellPhone.setCarrier(carrier);
-
-        System.out.printf("What is the phone number? ");
-        String phoneNumber = read.nextLine();
-        cellPhone.setPhoneNumber(phoneNumber);
-
-        System.out.printf("Who is the owner of the phone? ");
-        String owner = read.nextLine();
-        cellPhone.setOwner(owner);
-
-        System.out.println();
-        System.out.println("Serial Number: " + cellPhone.getSerialNumber());
-        System.out.println("Model: " + cellPhone.getModel());
-        System.out.println("Carrier: " + cellPhone.getCarrier());
-        System.out.println("Phone Number: " + cellPhone.getPhoneNumber());
-        System.out.println("Owner: " + cellPhone.getOwner());
+    public static void display(CellPhoneApplication phone) {
+        System.out.println("Serial Number: " + phone.getSerialNumber());
+        System.out.println("Model: " + phone.getModel());
+        System.out.println("Carrier: " + phone.getCarrier());
+        System.out.println("Phone Number: " + phone.getPhoneNumber());
+        System.out.println("Owner: " + phone.getOwner());
 
     }
 
