@@ -8,6 +8,9 @@ public class CellPhoneApplication {
 
         display(cellPhone1);
         display(cellPhone2);
+
+        cellPhone1.dial(cellPhone2.getPhoneNumber());
+        cellPhone2.dial(cellPhone1.getPhoneNumber());
     }
 
     public static void display(CellPhoneApplication phone) {
