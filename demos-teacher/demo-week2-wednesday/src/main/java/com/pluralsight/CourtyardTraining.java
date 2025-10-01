@@ -30,7 +30,7 @@ public class CourtyardTraining {
         }
 
         // Print end stats
-        System.out.println("At the end of her journey " + name + " has " + health + " health, " + potions + " potions, and " + gold + "gold.");
+        System.out.println("At the end of her journey " + name + " has " + health + " health, " + potions + " potions, and " + gold + " gold.");
     }
 }
 
