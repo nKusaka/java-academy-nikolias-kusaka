@@ -55,5 +55,12 @@ public class Main {
                 sevenCounter += 1;
             }
         }
+
+        // Displaying counters
+        System.out.println("Two was rolled " + twoCounter + " times");
+        System.out.println("Four was rolled " + fourCounter + " times");
+        System.out.println("Six was rolled " + sixCounter + " times");
+        System.out.println("Seven was rolled " + sevenCounter + " times");
+
     }
 }
