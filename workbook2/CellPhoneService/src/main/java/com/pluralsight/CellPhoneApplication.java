@@ -91,6 +91,10 @@ public class CellPhoneApplication {
         this.owner = owner;
     }
 
+    public void dial(String phoneNumber) {
+        System.out.println(this.owner + "'s phone is calling " + phoneNumber);
+    }
+
     private int serialNumber;
     private String model;
     private String carrier;
