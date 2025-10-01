@@ -82,6 +82,10 @@ public class CellPhoneApplication {
         System.out.println(this.owner + "'s phone is calling " + phoneNumber);
     }
 
+    public void dial(CellPhoneApplication cellPhone) {
+        System.out.println(this.owner + "'s phone is calling " + cellPhone.getPhoneNumber());
+    }
+
     private int serialNumber;
     private String model;
     private String carrier;
