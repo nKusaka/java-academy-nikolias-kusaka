@@ -6,10 +6,12 @@ public class CellPhoneApplication {
         CellPhoneApplication cellPhone1 = new CellPhoneApplication(72311, "IPhone 16 Pro Max", "Verizon", "7073721580", "Nik");
         CellPhoneApplication cellPhone2 = new CellPhoneApplication(71231, "IPhone 16 Pro Max", "Verizon", "7076125823", "Jake");
 
-
+        display(cellPhone1);
+        display(cellPhone2);
     }
 
     public static void display(CellPhoneApplication phone) {
+        System.out.println();
         System.out.println("Serial Number: " + phone.getSerialNumber());
         System.out.println("Model: " + phone.getModel());
         System.out.println("Carrier: " + phone.getCarrier());
