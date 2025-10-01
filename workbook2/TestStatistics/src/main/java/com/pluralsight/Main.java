@@ -12,10 +12,19 @@ public class Main {
 
         for (int scores: TestScore) {
             average += scores;
-
         }
-        System.out.println("The average score is: " + average / 10);
+
+        average /= 10;
+
+        System.out.println("The average score is: " + average);
         System.out.println("The lowest score is: " + TestScore[0]);
         System.out.println("The highest score is: " + TestScore[9]);
+
+        int median = ((TestScore[4] + TestScore[5])) / 2;
+        System.out.println(median);
+        System.out.println(average);
+        double difference = average - median;
+
+        System.out.println("The difference between the average and the median is : " + Math.abs(difference));
     }
 }
