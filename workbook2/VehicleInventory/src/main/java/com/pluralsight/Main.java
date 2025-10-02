@@ -89,13 +89,6 @@ public class Main {
 
     // Lists all vehicles by price
     public static void sortVehiclesByPrice(Vehicle[] vehicles, int counter) {
-        float[] prices = new float[counter];
-
-        for (int i = 0; i < counter; i++) {
-            prices[i] = vehicles[i].getPrice();
-        }
-        // Built in sorter method for the prices of the vehicles
-        Arrays.sort(prices);
 
         // Using sorted prices array and checking vehicles array to sort it.
         for (int i = 0; i < counter; i++) {
