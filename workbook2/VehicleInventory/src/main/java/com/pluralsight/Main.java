@@ -53,7 +53,10 @@ public class Main {
                     findVehiclesByPrice(vehicles, lowest, highest, counter);
                     break;
                 case 5:
-                    // findVehiclesByColor();
+                    read.nextLine();
+                    System.out.printf("Please enter the color of the vehicle you are looking for: ");
+                    String color = read.nextLine();
+                    findVehiclesByColor(vehicles, color, counter);
                     break;
                 case 6:
                     // addVehicle();
@@ -117,6 +120,7 @@ public class Main {
     public static void findVehiclesByPrice(Vehicle[] vehicles, float lowest, float highest, int counter) {
 
         System.out.println("Displaying vehicles within your price range");
+
         for (int i = 0; i < counter; i++) {
             if (vehicles[i].getPrice() >= lowest && vehicles[i].getPrice() <= highest) {
                 vehicles[i].displayVehicle();
@@ -125,5 +129,17 @@ public class Main {
         System.out.println();
     }
 
+    // Show all vehicles that are a specific color
+    public static void findVehiclesByColor(Vehicle[] vehicles, String color, int counter) {
 
+        System.out.println("Displaying all vehicles with the color " + color);
+
+        for (int i = 0; i < counter; i++) {
+            if(color.equalsIgnoreCase(vehicles[i].getColor())) {
+                vehicles[i].displayVehicle();
+            }
+        }
+        System.out.println();
+
+    }
 }
