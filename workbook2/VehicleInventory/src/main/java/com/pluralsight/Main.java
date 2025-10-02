@@ -47,10 +47,10 @@ public class Main {
                     break;
                 case 4:
                     System.out.printf("Please enter the lowest value vehicles you would like to see: ");
-                    int lowest = read.nextInt();
+                    float lowest = read.nextFloat();
                     System.out.printf("Please enter the highest value vehicles you would like to see: ");
-                    int highest = read.nextInt();
-                    findVehiclesByPrice(vehicles, lowest, highest);
+                    float highest = read.nextFloat();
+                    findVehiclesByPrice(vehicles, lowest, highest, counter);
                     break;
                 case 5:
                     // findVehiclesByColor();
@@ -101,9 +101,9 @@ public class Main {
         for (int i = 0; i < counter; i++) {
             for (int j = 0; j < counter - 1 - i; j++) {
                 if (vehicles[j].getPrice() > vehicles[j + 1].getPrice()) {
-                    float temp = vehicles[j].getPrice();
+                    Vehicle temp = vehicles[j];
                     vehicles[j] = vehicles[j + 1];
-                    vehicles[j + 1].setPrice(temp);
+                    vehicles[j + 1] = temp;
                 }
             }
         }
@@ -114,8 +114,15 @@ public class Main {
     }
 
     // Show all vehicles within a price range
-    public static void findVehiclesByPrice(Vehicle[] vehicles, int lowest, int highest) {
+    public static void findVehiclesByPrice(Vehicle[] vehicles, float lowest, float highest, int counter) {
 
+        System.out.println("Displaying vehicles within your price range");
+        for (int i = 0; i < counter; i++) {
+            if (vehicles[i].getPrice() >= lowest && vehicles[i].getPrice() <= highest) {
+                vehicles[i].displayVehicle();
+            }
+        }
+        System.out.println();
     }
 
 
