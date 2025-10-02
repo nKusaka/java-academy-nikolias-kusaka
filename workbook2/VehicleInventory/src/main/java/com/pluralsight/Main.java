@@ -32,7 +32,7 @@ public class Main {
         int command = read.nextInt();
 
         // while loop insures users input is correct
-        while (command != 6) {
+        while (command != 7) {
 
             // switch statement for readability and easy access
             switch (command) {
@@ -46,11 +46,17 @@ public class Main {
                     sortVehiclesByPrice(vehicles, counter);
                     break;
                 case 4:
-                    // findVehiclesByColor();
+                    System.out.printf("Please enter the lowest value vehicles you would like to see: ");
+                    int lowest = read.nextInt();
+                    System.out.printf("Please enter the highest value vehicles you would like to see: ");
+                    int highest = read.nextInt();
+                    findVehiclesByPrice(vehicles, lowest, highest);
                     break;
                 case 5:
-                    // addVehicle();
+                    // findVehiclesByColor();
                     break;
+                case 6:
+                    // addVehicle();
             }
             System.out.println("What do you want to do?");
             System.out.println("  1 - List all vehicles");
@@ -104,6 +110,11 @@ public class Main {
         for (int i = 0; i < counter; i++) {
             vehicles[i].getVehicle();
         }
+    }
+
+    // Show all vehicles within a price range
+    public static void findVehiclesByPrice(Vehicle[] vehicles, int lowest, int highest) {
+
     }
 
 
