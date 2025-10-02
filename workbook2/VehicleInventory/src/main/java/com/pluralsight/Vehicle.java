@@ -69,6 +69,6 @@ public class Vehicle {
     }
 
     public void getVehicle() {
-        System.out.println(getVehicleID() + "," + getMakeModel() + "," + getColor() + ", miles: " + getOdometerReading() + ", price: " + getPrice());
+        System.out.println(getVehicleID() + "," + getMakeModel() + "," + getColor() + ",miles: " + getOdometerReading() + ",price: " + getPrice());
     }
 }

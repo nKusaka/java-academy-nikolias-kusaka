@@ -68,7 +68,7 @@ public class Main {
         System.out.println("Listing all available vehicles");
 
         for (int i = 0; i < counter; i++) {
-            System.out.println(vehicles[i].getMakeModel());
+            vehicles[i].getVehicle();
         }
 
         System.out.println();
