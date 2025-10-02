@@ -38,7 +38,7 @@ public class Main {
                     listAllVehicles(vehicles, counter);
                     break;
                 case 2:
-                    // findVehiclesByMakeModel();
+                    //findVehiclesByMakeModel();
                     break;
                 case 3:
                     // findVehiclesByPrice();
@@ -62,11 +62,17 @@ public class Main {
         }
         System.out.println("Thank you have a good day!");
     }
+
+    // Lists vehicles by their make and model.
     public static void listAllVehicles (Vehicle[] vehicles, int counter){
         System.out.println("Listing all available vehicles");
+
         for (int i = 0; i < counter; i++) {
             System.out.println(vehicles[i].getMakeModel());
         }
+
         System.out.println();
     }
+
+
 }

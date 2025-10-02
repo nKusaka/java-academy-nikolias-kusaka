@@ -67,4 +67,8 @@ public class Vehicle {
     public float getPrice() {
         return this.price;
     }
+
+    public void getVehicle() {
+        System.out.println(getVehicleID() + "," + getMakeModel() + "," + getColor() + ", miles: " + getOdometerReading() + ", price: " + getPrice());
+    }
 }
