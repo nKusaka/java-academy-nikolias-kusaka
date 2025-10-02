@@ -16,6 +16,8 @@ public class Main {
         vehicles[4] = new Vehicle(101125, "Subaru Outback", "Green", 55000, 14500);
         vehicles[5] = new Vehicle(101126, "Jeep Wrangler", "Yellow", 30000, 16000);
 
+        // Create counter for array
+        int counter = 6;
         // Prompting user for input
         System.out.println("What do you want to do?");
         System.out.println("  1 - List all vehicles");
@@ -33,7 +35,7 @@ public class Main {
             // switch statement for readability and easy access
             switch (command) {
                 case 1:
-                    listAllVehicles(vehicles);
+                    listAllVehicles(vehicles, counter);
                     break;
                 case 2:
                     // findVehiclesByMakeModel();
@@ -60,9 +62,9 @@ public class Main {
         }
         System.out.println("Thank you have a good day!");
     }
-    public static void listAllVehicles (Vehicle[] vehicles){
+    public static void listAllVehicles (Vehicle[] vehicles, int counter){
         System.out.println("Listing all available vehicles");
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < counter; i++) {
             System.out.println(vehicles[i].getMakeModel());
         }
         System.out.println();
