@@ -59,7 +59,9 @@ public class Main {
                     findVehiclesByColor(vehicles, color, counter);
                     break;
                 case 6:
-                    // addVehicle();
+                    vehicles[counter] = addVehicle(counter, read);
+                    counter++;
+                    break;
             }
             System.out.println("What do you want to do?");
             System.out.println("  1 - List all vehicles");
@@ -140,6 +142,33 @@ public class Main {
             }
         }
         System.out.println();
+
+    }
+
+    // Let user add a vehicle to the array
+    public static Vehicle addVehicle(int counter, Scanner read) {
+
+        System.out.printf("Enter the vehicle ID (should only be number): ");
+        long vehicleID = read.nextLong();
+        read.nextLine();
+
+        System.out.printf("Enter the vehicle make and model: ");
+        String makeModel = read.nextLine();
+
+        System.out.printf("Enter the vehicle color: ");
+        String color = read.nextLine();
+
+        System.out.printf("Enter the odometer reading of the vehicle (should be a number): ");
+        int odometerReading = read.nextInt();
+
+        System.out.printf("Enter the price of the vehicle (do not add dollar sign): ");
+        float price = read.nextFloat();
+
+        Vehicle vehicle = new Vehicle(vehicleID, makeModel, color, odometerReading, price);
+
+        vehicle.displayVehicle();
+
+        return vehicle;
 
     }
 }
