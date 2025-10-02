@@ -1,4 +1,5 @@
 package com.pluralsight;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -41,7 +42,7 @@ public class Main {
                     findVehiclesByMakeModel();
                     break;
                 case 3:
-                    // findVehiclesByPrice();
+                    findVehiclesByPrice();
                     break;
                 case 4:
                     // findVehiclesByColor();
@@ -83,6 +84,21 @@ public class Main {
         }
 
         System.out.println();
+    }
+
+    // Lists all vehicles by price
+    public static void findVehiclesByPrice(Vehicle[] vehicles, int counter) {
+        float[] prices = new float[counter];
+
+        for (int i = 0; i < counter; i++) {
+            prices[i] = vehicles[i].getPrice();
+        }
+
+        Arrays.sort(prices);
+
+        for (int i = 0; i < counter; i++) {
+            System.out.println("$" + prices[i]);
+        }
     }
 
 
