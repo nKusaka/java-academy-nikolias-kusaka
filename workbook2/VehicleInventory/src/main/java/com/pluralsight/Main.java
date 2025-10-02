@@ -6,7 +6,7 @@ public class Main {
 
         // Created scanner object for user input and vehicle array
         Scanner read = new Scanner(System.in);
-        Vehicle[] vehicles= new Vehicle[20];
+        Vehicle[] vehicles = new Vehicle[20];
 
         // Preloaded vehicle array
         vehicles[0] = new Vehicle(101121, "Ford Explorer", "Red", 45000, 13500);
@@ -28,7 +28,26 @@ public class Main {
         int command = read.nextInt();
 
         // while loop insures users input is correct
-        while (command > 7 || command < 0) {
+        while (command != 6) {
+
+            // switch statement for readability and easy access
+            switch (command) {
+                case 1:
+                    listAllVehicles(vehicles);
+                    break;
+                case 2:
+                    // findVehiclesByMakeModel();
+                    break;
+                case 3:
+                    // findVehiclesByPrice();
+                    break;
+                case 4:
+                    // findVehiclesByColor();
+                    break;
+                case 5:
+                    // addVehicle();
+                    break;
+            }
             System.out.println("What do you want to do?");
             System.out.println("  1 - List all vehicles");
             System.out.println("  2 - Search by make/model");
@@ -39,31 +58,13 @@ public class Main {
             System.out.printf("Enter your command: ");
             command = read.nextInt();
         }
-
-        // switch statement for readability and easy access
-        switch (command) {
-            case 1:
-                listAllVehicles();
-                break;
-            case 2:
-                findVehiclesByMakeModel();
-                break;
-            case 3:
-                findVehiclesByPrice();
-                break;
-            case 4:
-                findVehiclesByColor();
-                break;
-            case 5:
-                addVehicle();
-                break;
-            case 6:
-                break;
-        }
-
         System.out.println("Thank you have a good day!");
     }
-
-
-
+    public static void listAllVehicles (Vehicle[] vehicles){
+        System.out.println("Listing all available vehicles");
+        for (int i = 0; i < 6; i++) {
+            System.out.println(vehicles[i].getMakeModel());
+        }
+        System.out.println();
+    }
 }
