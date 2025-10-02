@@ -71,4 +71,8 @@ public class Vehicle {
     public void getVehicle() {
         System.out.println(getVehicleID() + "," + getMakeModel() + "," + getColor() + ",miles: " + getOdometerReading() + ",price: " + getPrice());
     }
+
+    public void displayVehicle() {
+        System.out.println(getColor() + " " + getMakeModel() + " for $" + getPrice());
+    }
 }
