@@ -23,10 +23,11 @@ public class Main {
         System.out.println("What do you want to do?");
         System.out.println("  1 - List all vehicles");
         System.out.println("  2 - Search by make/model");
-        System.out.println("  3 - Search by price range");
-        System.out.println("  4 - Search by color");
-        System.out.println("  5 - Add a vehicle");
-        System.out.println("  6 - Quit");
+        System.out.println("  3 - Sort vehicles by price");
+        System.out.println("  4 - Search by price range");
+        System.out.println("  5 - Search by color");
+        System.out.println("  6 - Add a vehicle");
+        System.out.println("  7 - Quit");
         System.out.printf("Enter your command: ");
         int command = read.nextInt();
 
@@ -39,10 +40,10 @@ public class Main {
                     listAllVehicles(vehicles, counter);
                     break;
                 case 2:
-                    findVehiclesByMakeModel();
+                    findVehiclesByMakeModel(vehicles, counter);
                     break;
                 case 3:
-                    findVehiclesByPrice();
+                    sortVehiclesByPrice(vehicles, counter);
                     break;
                 case 4:
                     // findVehiclesByColor();
@@ -87,17 +88,28 @@ public class Main {
     }
 
     // Lists all vehicles by price
-    public static void findVehiclesByPrice(Vehicle[] vehicles, int counter) {
+    public static void sortVehiclesByPrice(Vehicle[] vehicles, int counter) {
         float[] prices = new float[counter];
 
         for (int i = 0; i < counter; i++) {
             prices[i] = vehicles[i].getPrice();
         }
-
+        // Built in sorter method for the prices of the vehicles
         Arrays.sort(prices);
 
+        // Using sorted prices array and checking vehicles array to sort it.
         for (int i = 0; i < counter; i++) {
-            System.out.println("$" + prices[i]);
+            for (int j = 0; j < counter - 1 - i; j++) {
+                if (vehicles[j].getPrice() > vehicles[j + 1].getPrice()) {
+                    float temp = vehicles[j].getPrice();
+                    vehicles[j] = vehicles[j + 1];
+                    vehicles[j + 1].setPrice(temp);
+                }
+            }
+        }
+        System.out.println("Vehicles sorted by lowest price to highest price");
+        for (int i = 0; i < counter; i++) {
+            vehicles[i].getVehicle();
         }
     }
 
