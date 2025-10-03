@@ -86,6 +86,6 @@ public class Book {
     // Method to override string output
     @Override
     public String toString() {
-        return "Book ID: " + this.id + " ISBN: " + this.isbn + "Title: " + this.title;
+        return "Book ID: " + this.id + " ISBN: " + this.isbn + " Title: " + this.title;
     }
 }
