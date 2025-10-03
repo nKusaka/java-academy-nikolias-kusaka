@@ -82,4 +82,10 @@ public class Book {
         this.checkedOutTo = "";
         this.isCheckedOut = false;
     }
+
+    // Method to override string output
+    @Override
+    public String toString() {
+        return "Book ID: " + this.id + " ISBN: " + this.isbn + "Title: " + this.title;
+    }
 }
