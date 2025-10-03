@@ -1,4 +1,5 @@
 package com.pluralsight;
+import java.util.Scanner;
 
 public class Book {
 
@@ -70,5 +71,15 @@ public class Book {
         return this.checkedOutTo;
     }
 
+    // Method to check out a book from the library
+    public void checkOut(String name) {
+        this.checkedOutTo = name;
+        this.isCheckedOut = true;
+    }
 
+    // Method to check in a book to the library
+    public void checkIn() {
+        this.checkedOutTo = "";
+        this.isCheckedOut = false;
+    }
 }
