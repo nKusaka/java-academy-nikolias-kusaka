@@ -11,8 +11,21 @@ public class Main {
         // Home screen
         int userChoice = homeScreen(read);
 
-
-
+        // Loop to keep program running
+        while(userChoice != 4) {
+            switch (userChoice) {
+                case 1:
+                    showAvailableBooks(read, library);
+                    break;
+                case 2:
+                    //showCheckedOutBooks();
+                    break;
+                case 3:
+                    //checkInBook();
+                    break;
+            }
+            userChoice = homeScreen(read);
+        }
     }
 
     public static Book[] initializeLibrary() {
@@ -47,7 +60,8 @@ public class Main {
                          + "                  Home Screen                    \n"
                          + "      Press 1 to show available inventory        \n"
                          + "       Press 2 to show checked out books         \n"
-                         + "                Press 3 to exit                  \n"
+                         + "            Press 3 to check in a book           \n"
+                         + "               Press 4 to exit                   \n"
                          + "=================================================");
 
         // User input
@@ -55,10 +69,10 @@ public class Main {
         int userChoice = read.nextInt();
 
         // While loop to ensure correct user input
-        while(userChoice != 1 && userChoice != 2) {
+        while(userChoice != 1 && userChoice != 2 && userChoice != 3) {
 
             // If user chooses to exit stop the code
-            if(userChoice == 3) {
+            if(userChoice == 4) {
                 break;
             }
 
@@ -66,7 +80,8 @@ public class Main {
                              + "                  Home Screen                    \n"
                              + "      Press 1 to show available inventory        \n"
                              + "       Press 2 to show checked out books         \n"
-                             + "                Press 3 to exit                  \n"
+                             + "            Press 3 to check in a book           \n"
+                             + "               Press 4 to exit                   \n"
                              + "=================================================");
 
             System.out.printf("Your choice: ");
@@ -75,4 +90,19 @@ public class Main {
 
         return userChoice;
     }
+
+    public static void showAvailableBooks(Scanner read, Book[] library) {
+        System.out.println("========================================\n"
+                          +"        Showing available books         \n"
+                          +"========================================");
+
+        for(int i = 0; i < 20; i++) {
+            sout
+        }
+    }
+
+
+
+
 }
+
