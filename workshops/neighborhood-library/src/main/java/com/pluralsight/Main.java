@@ -96,8 +96,8 @@ public class Main {
     // Method to show available books in the library
     public static void showAvailableBooks(Scanner read, Book[] library) {
         System.out.println("========================================\n"
-                         + "        Showing available books         \n"
-                         + "========================================");
+                + "        Showing available books         \n"
+                + "========================================");
 
         for (int i = 0; i < 20; i++) {
             System.out.println((i + 1) + ". " + library[i]);
@@ -135,21 +135,26 @@ public class Main {
 
     // Method to show check out books from the library
     public static void showCheckedOutBooks(Scanner read, Book[] library) {
-        System.out.println("==========================================\n"
-                          +"         Showing checked out books        \n"
-                          +"==========================================");
 
-        for(int i = 0; i < 20; i++) {
-            if(library[i].getIsCheckedOut()) {
+        int counter = 0;
+        System.out.println("==========================================\n"
+                         + "         Showing checked out books        \n"
+                         + "==========================================");
+
+        for (int i = 0; i < 20; i++) {
+            if (library[i].getIsCheckedOut()) {
                 System.out.println(library[i] + " is checked out to " + library[i].getCheckedOutTo());
+                counter++;
             }
         }
 
-        // Prompting user for input
-        System.out.println("Would you like to check in a book?");
-        System.out.println("Press C to check in a book or X to go back to the home screen");
-        String userChoice = read.nextLine();
-    }
+        if (counter < 0) {
+            // Prompting user for input
+            System.out.println("Would you like to check in a book?");
+            System.out.println("Press C to check in a book or X to go back to the home screen");
+            String userChoice = read.nextLine();
+        }
 
+    }
 }
 
