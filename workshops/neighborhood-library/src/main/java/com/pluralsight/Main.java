@@ -15,10 +15,12 @@ public class Main {
         while (userChoice != 4) {
             switch (userChoice) {
                 case 1:
+                    read.nextLine();
                     showAvailableBooks(read, library);
                     break;
                 case 2:
-                    //showCheckedOutBooks();
+                    read.nextLine();
+                    showCheckedOutBooks(read, library);
                     break;
                 case 3:
                     //checkInBook();
@@ -94,8 +96,8 @@ public class Main {
     // Method to show available books in the library
     public static void showAvailableBooks(Scanner read, Book[] library) {
         System.out.println("========================================\n"
-                + "        Showing available books         \n"
-                + "========================================");
+                         + "        Showing available books         \n"
+                         + "========================================");
 
         for (int i = 0; i < 20; i++) {
             System.out.println((i + 1) + ". " + library[i]);
@@ -111,13 +113,13 @@ public class Main {
             // Ask user for the id of the book and make sure that book gets checked out i.e. isCheckedOut = true
             System.out.println("Please enter the ID of the book you would like to check out");
             userChoice = read.nextInt();
-            library[userChoice].setIsCheckedOut(true);
+            library[userChoice - 1].setIsCheckedOut(true);
             read.nextLine();
 
             // Ask for the users name for CheckOutTo to become the persons name in the book object
             System.out.println("Please enter who is checking out the book, enter your name: ");
             String userName = read.nextLine();
-            library[userChoice].checkOut(userName);
+            library[userChoice - 1].checkOut(userName);
 
             // Ending message
             System.out.println("Enjoy reading your book " + userName);
@@ -131,7 +133,23 @@ public class Main {
         }
     }
 
+    // Method to show check out books from the library
+    public static void showCheckedOutBooks(Scanner read, Book[] library) {
+        System.out.println("==========================================\n"
+                          +"         Showing checked out books        \n"
+                          +"==========================================");
 
+        for(int i = 0; i < 20; i++) {
+            if(library[i].getIsCheckedOut()) {
+                System.out.println(library[i] + " is checked out to " + library[i].getCheckedOutTo());
+            }
+        }
+
+        // Prompting user for input
+        System.out.println("Would you like to check in a book?");
+        System.out.println("Press C to check in a book or X to go back to the home screen");
+        String userChoice = read.nextLine();
+    }
 
 }
 
