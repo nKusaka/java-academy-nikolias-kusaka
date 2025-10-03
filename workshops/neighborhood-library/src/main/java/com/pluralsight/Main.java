@@ -5,9 +5,43 @@ public class Main {
     public static void main(String[] args) {
 
         Book[] library = initializeLibrary();
+        Scanner read = new Scanner(System.in);
 
+        System.out.println("=================================================\n"
+                         + "                  Home Screen                    \n"
+                         + "      Press 1 to show available inventory        \n"
+                         + "       Press 2 to show checked out books         \n"
+                         + "                Press 3 to exit                  \n"
+                         + "=================================================");
 
+        System.out.printf("Your choice: ");
+        int userChoice = read.nextInt();
 
+        while(userChoice != 1 && userChoice != 2) {
+
+            if(userChoice == 3) {
+                break;
+            }
+
+            System.out.println("=================================================\n"
+                             + "                  Home Screen                    \n"
+                             + "      Press 1 to show available inventory        \n"
+                             + "       Press 2 to show checked out books         \n"
+                             + "                Press 3 to exit                  \n"
+                             + "=================================================");
+
+            System.out.printf("Your choice: ");
+            userChoice = read.nextInt();
+        }
+
+        switch (userChoice) {
+            case 1:
+                //availableInventory()
+                break;
+            case 2:
+               //checkedOutBooks()
+                break;
+        }
     }
 
     public static Book[] initializeLibrary() {
