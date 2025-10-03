@@ -69,7 +69,7 @@ public class Main {
         int userChoice = read.nextInt();
 
         // While loop to ensure correct user input
-        while (userChoice != 1 && userChoice != 2 && userChoice != 3) {
+        while (userChoice != 1 && userChoice != 2) {
 
             // If user chooses to exit stop the code
             if (userChoice == 3) {
