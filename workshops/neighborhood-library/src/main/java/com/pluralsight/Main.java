@@ -91,6 +91,7 @@ public class Main {
         return userChoice;
     }
 
+    // Method to show available books in the library
     public static void showAvailableBooks(Scanner read, Book[] library) {
         System.out.println("========================================\n"
                           +"        Showing available books         \n"
@@ -98,6 +99,22 @@ public class Main {
 
         for(int i = 0; i < 20; i++) {
             System.out.println((i + 1) + ". " + library[i]);
+        }
+
+        // Ask user if they would like to check out a book
+        System.out.println("Would you also like to check out a book? ");
+        System.out.println("Press 1 for Yes, or 2 for No");
+        int userChoice = read.nextInt();
+
+        if (userChoice == 1) {
+            System.out.println("Please enter the ID of the book you would like to check out");
+        } else {
+            System.out.println("Returning to home screen.....");
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
