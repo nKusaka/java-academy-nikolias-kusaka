@@ -12,7 +12,7 @@ public class Main {
         int userChoice = homeScreen(read);
 
         // Loop to keep program running
-        while(userChoice != 4) {
+        while (userChoice != 4) {
             switch (userChoice) {
                 case 1:
                     showAvailableBooks(read, library);
@@ -33,8 +33,8 @@ public class Main {
         books[0] = new Book(1, "9783061069094", "Harry Potter");
         books[1] = new Book(2, "9795178347446", "Percy Jackson");
         books[2] = new Book(3, "9795872059423", "Bible");
-        books[3] = new Book(4,"9795238310953","Demon Slayer");
-        books[4] = new Book(5,"9780115958212","Dragonball");
+        books[3] = new Book(4, "9795238310953", "Demon Slayer");
+        books[4] = new Book(5, "9780115958212", "Dragonball");
         books[5] = new Book(6, "9781752518869", "Dragonball Z");
         books[6] = new Book(7, "9793724252688", "Bleach");
         books[7] = new Book(8, "9795225941849", "Java for Beginners");
@@ -57,32 +57,32 @@ public class Main {
     // Method for home screen to keep code organized
     public static int homeScreen(Scanner read) {
         System.out.println("=================================================\n"
-                         + "                  Home Screen                    \n"
-                         + "      Press 1 to show available inventory        \n"
-                         + "       Press 2 to show checked out books         \n"
-                         + "            Press 3 to check in a book           \n"
-                         + "               Press 4 to exit                   \n"
-                         + "=================================================");
+                + "                  Home Screen                    \n"
+                + "      Press 1 to show available inventory        \n"
+                + "       Press 2 to show checked out books         \n"
+                + "            Press 3 to check in a book           \n"
+                + "               Press 4 to exit                   \n"
+                + "=================================================");
 
         // User input
         System.out.printf("Your choice: ");
         int userChoice = read.nextInt();
 
         // While loop to ensure correct user input
-        while(userChoice != 1 && userChoice != 2 && userChoice != 3) {
+        while (userChoice != 1 && userChoice != 2 && userChoice != 3) {
 
             // If user chooses to exit stop the code
-            if(userChoice == 4) {
+            if (userChoice == 4) {
                 break;
             }
 
             System.out.println("=================================================\n"
-                             + "                  Home Screen                    \n"
-                             + "      Press 1 to show available inventory        \n"
-                             + "       Press 2 to show checked out books         \n"
-                             + "            Press 3 to check in a book           \n"
-                             + "               Press 4 to exit                   \n"
-                             + "=================================================");
+                    + "                  Home Screen                    \n"
+                    + "      Press 1 to show available inventory        \n"
+                    + "       Press 2 to show checked out books         \n"
+                    + "            Press 3 to check in a book           \n"
+                    + "               Press 4 to exit                   \n"
+                    + "=================================================");
 
             System.out.printf("Your choice: ");
             userChoice = read.nextInt();
@@ -94,10 +94,10 @@ public class Main {
     // Method to show available books in the library
     public static void showAvailableBooks(Scanner read, Book[] library) {
         System.out.println("========================================\n"
-                          +"        Showing available books         \n"
-                          +"========================================");
+                + "        Showing available books         \n"
+                + "========================================");
 
-        for(int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++) {
             System.out.println((i + 1) + ". " + library[i]);
         }
 
@@ -107,17 +107,29 @@ public class Main {
         int userChoice = read.nextInt();
 
         if (userChoice == 1) {
+
+            // Ask user for the id of the book and make sure that book gets checked out i.e. isCheckedOut = true
             System.out.println("Please enter the ID of the book you would like to check out");
-        } else {
-            System.out.println("Returning to home screen.....");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            userChoice = read.nextInt();
+            library[userChoice].setIsCheckedOut(true);
+            read.nextLine();
+
+            // Ask for the users name for CheckOutTo to become the persons name in the book object
+            System.out.println("Please enter who is checking out the book, enter your name: ");
+            String userName = read.nextLine();
+            library[userChoice].checkOut(userName);
+
+            // Ending message
+            System.out.println("Enjoy reading your book " + userName);
+        }
+
+        System.out.println("Returning to home screen.....");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
-
 
 
 
