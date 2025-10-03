@@ -25,6 +25,8 @@ public class Main {
             }
             userChoice = homeScreen(read);
         }
+
+        System.out.println("\n\nThank you for coming to the library have a great day!\n\n");
     }
 
     public static Book[] initializeLibrary() {
