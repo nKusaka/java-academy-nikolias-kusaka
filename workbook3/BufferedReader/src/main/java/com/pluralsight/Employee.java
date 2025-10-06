@@ -17,6 +17,11 @@ public class Employee {
 
     }
 
+    // Empty Constructor
+    public Employee() {
+
+    }
+
     // Setters
     public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
