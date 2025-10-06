@@ -35,5 +35,6 @@ public class Main {
             System.out.println("File unreachable");
         }
 
+        read.close();
     }
 }
