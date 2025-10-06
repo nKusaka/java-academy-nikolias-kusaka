@@ -1,5 +1,6 @@
 package com.pluralsight;
 import java.io.*;
+import java.nio.Buffer;
 import java.util.Scanner;
 
 public class Main {
@@ -54,7 +55,12 @@ public class Main {
                 employeeArray[counter].setName(name);
                 employeeArray[counter].setHoursWorked(hoursWorked);
                 employeeArray[counter].setPayRate(payRate);
+
+                counter++;
             }
+
+            fileReader.close();
+            bufferedReader.close();
         }
         catch(IOException e) {
             System.out.println("File unreachable");
@@ -63,14 +69,24 @@ public class Main {
         // Try catch statement for fileWriter
         try {
 
+            String outputFile;
+
             // Get user input
             System.out.println("Enter the name of the file you would like to write to: ");
             String userFile = read.nextLine();
-
-
             FileWriter fileWriter = new FileWriter(userFile);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
+            for(Employee employee : employeeArray){
+                if (employee == null) continue;
+                outputFile = String.format("%d | %s | %.2f%n",
+                employee.getEmployeeID(), employee.getName(), employee.getGrossPay());
 
+                bufferedWriter.write(outputFile);
+            }
+
+            bufferedWriter.close();
+            fileWriter.close();
         }
         catch (IOException e) {
             System.out.println("File name not specific");
