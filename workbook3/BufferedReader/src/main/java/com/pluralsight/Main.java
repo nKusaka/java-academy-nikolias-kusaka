@@ -78,7 +78,6 @@ public class Main {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             for(Employee employee : employeeArray){
-                if (employee == null) continue;
                 outputFile = String.format("%d | %s | %.2f%n",
                 employee.getEmployeeID(), employee.getName(), employee.getGrossPay());
 
