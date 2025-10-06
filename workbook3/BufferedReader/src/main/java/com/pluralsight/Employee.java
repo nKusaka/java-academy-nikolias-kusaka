@@ -50,4 +50,8 @@ public class Employee {
     public float getPayRate() {
         return this.payRate;
     }
+
+    public float getGrossPay() {
+        return this.hoursWorked * this.payRate;
+    }
 }
