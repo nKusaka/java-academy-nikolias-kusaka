@@ -5,14 +5,16 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        // Create Scanner to read user input
+        Scanner read = new Scanner(System.in);
 
+        // Create new employee array object
+        Employee[] employeeArray = new Employee[8];
+
+        // Try catch statement for fileReader
         try {
-            // Create new employee array object
-            Employee[] employeeArray = new Employee[8];
 
-            // Create Scanner to read user input
-            Scanner read = new Scanner(System.in);
-
+            // Prompt user input
             System.out.printf("Please enter a file name to read from: ");
             String userFile = read.nextLine();
 
@@ -52,17 +54,26 @@ public class Main {
                 employeeArray[counter].setName(name);
                 employeeArray[counter].setHoursWorked(hoursWorked);
                 employeeArray[counter].setPayRate(payRate);
-
-                // Print out data in a legible format
-                System.out.println("Employee ID: " + employeeArray[counter].getEmployeeID() + " Employee name: " + employeeArray[counter].getName() + " Gross Pay: $" + employeeArray[counter].getGrossPay());
-
-                // Increment counter
-                counter++;
             }
         }
         catch(IOException e) {
             System.out.println("File unreachable");
         }
 
+        // Try catch statement for fileWriter
+        try {
+
+            // Get user input
+            System.out.println("Enter the name of the file you would like to write to: ");
+            String userFile = read.nextLine();
+
+
+            FileWriter fileWriter = new FileWriter(userFile);
+
+
+        }
+        catch (IOException e) {
+            System.out.println("File name not specific");
+        }
     }
 }
