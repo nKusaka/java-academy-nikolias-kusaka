@@ -1,17 +1,43 @@
 package com.pluralsight;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+        try {
+
+            // Create a file reader object to connect to the file
+            FileReader fileReader = new FileReader("employees.csv");
+
+            // Create a buffered reader object to manage input stream
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String input;
+            boolean header = true;
+
+            // Read until there is no more data
+            while ((input = bufferedReader.readLine()) != null) {
+                if (header) {
+                    header = false;
+                    continue;
+                }
+
+                String[] employeeData = input.split("\\|");
+
+                int employeeID = Integer.parseInt(employeeData[0]);
+                String name = employeeData[1];
+                float hoursWorked = Float.parseFloat(employeeData[2]);
+                float payRate = Float.parseFloat(employeeData[3]);
+
+
+            }
         }
+        catch(IOException e) {
+            System.out.println("File unreachable");
+        }
+
     }
 }

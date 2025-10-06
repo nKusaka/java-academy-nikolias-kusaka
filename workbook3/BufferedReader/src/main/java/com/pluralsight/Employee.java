@@ -19,7 +19,7 @@ public class Employee {
 
     // Setters
     public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID
+        this.employeeID = employeeID;
     }
 
     public void setName(String name) {
