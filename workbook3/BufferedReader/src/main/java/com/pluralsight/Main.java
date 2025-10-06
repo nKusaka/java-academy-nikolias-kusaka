@@ -87,7 +87,7 @@ public class Main {
             }
             else {
                 for (Employee employee: employeeArray) {
-                    outputFile = String.format("{\"id\" : %d, \"name\", : \"%s\" \"grossPay\" : %.2f }%n"
+                    outputFile = String.format("{\"id\" : %d, \"name\", : \"%s\" \"grossPay\" : %.2f },%n"
                             ,employee.getEmployeeID(), employee.getName(), employee.getGrossPay());
                     bufferedWriter.write(outputFile);
                 }
