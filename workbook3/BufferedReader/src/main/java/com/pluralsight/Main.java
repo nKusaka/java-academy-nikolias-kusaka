@@ -72,16 +72,25 @@ public class Main {
             String outputFile;
 
             // Get user input
-            System.out.println("Enter the name of the file you would like to write to: ");
+            System.out.println("Enter the name of the file you would like to write to also specify .csv or .json: ");
             String userFile = read.nextLine();
             FileWriter fileWriter = new FileWriter(userFile);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            for(Employee employee : employeeArray){
-                outputFile = String.format("%d | %s | %.2f%n",
-                employee.getEmployeeID(), employee.getName(), employee.getGrossPay());
+            if(userFile.contains(".csv")) {
+                for (Employee employee : employeeArray) {
+                    outputFile = String.format("%d | %s | %.2f%n",
+                            employee.getEmployeeID(), employee.getName(), employee.getGrossPay());
 
-                bufferedWriter.write(outputFile);
+                    bufferedWriter.write(outputFile);
+                }
+            }
+            else {
+                for (Employee employee: employeeArray) {
+                    outputFile = String.format("{\"id\" : %d, \"name\", : \"%s\" \"grossPay\" : %.2f%n }"
+                            ,employee.getEmployeeID(), employee.getName(), employee.getGrossPay());
+                    bufferedWriter.write(outputFile);
+                }
             }
 
             bufferedWriter.close();
