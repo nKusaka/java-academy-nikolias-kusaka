@@ -97,7 +97,9 @@ public class Main {
                          + "========================================");
 
         for (int i = 0; i < 20; i++) {
-            System.out.println((i + 1) + ". " + library[i]);
+            if(library[i].getIsCheckedOut() == false) {
+                System.out.println((i + 1) + ". " + library[i]);
+            }
         }
 
         // Ask user if they would like to check out a book
