@@ -1,7 +1,6 @@
 package com.pluralsight;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,8 +10,14 @@ public class Main {
             // Create new employee array object
             Employee[] employeeArray = new Employee[8];
 
+            // Create Scanner to read user input
+            Scanner read = new Scanner(System.in);
+
+            System.out.printf("Please enter a file name to read from: ");
+            String userFile = read.nextLine();
+
             // Create a file reader object to connect to the file
-            FileReader fileReader = new FileReader("employees.csv");
+            FileReader fileReader = new FileReader(userFile);
 
             // Create a buffered reader object to manage input stream
             BufferedReader bufferedReader = new BufferedReader(fileReader);
