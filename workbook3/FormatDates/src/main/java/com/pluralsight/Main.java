@@ -1,9 +1,7 @@
 package com.pluralsight;
-import java.time.DateTimeException;
-import java.time.LocalDate;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatterBuilder;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -14,16 +12,26 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         String formattedDate = dateToday.format(formatter);
 
-        // Output date and time
+        // Output date in different formats in PST
         System.out.println(formattedDate);
         System.out.println(dateToday);
 
-        // Reuse old formatter to change format of date
+        // Output date in format MMMM dd, yyyy in PST
         formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
         formattedDate = dateToday.format(formatter);
         System.out.println(formattedDate);
 
-        // Create new date time formatter to get time as well into date
+        // Output date and time in GMT
+        ZonedDateTime gmtTime = ZonedDateTime.now(ZoneId.of("GMT"));
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("EEEE, MMM d, yyyy  HH:mm");
+        formattedDate = gmtTime.format(dateTimeFormatter);
+        System.out.println(formattedDate);
+
+        // Output date and time in PST
+        LocalDateTime today = LocalDateTime.now();
+        dateTimeFormatter = DateTimeFormatter.ofPattern("H:mm 'on' dd-MMM-yyyy");
+        formattedDate = today.format(dateTimeFormatter);
+        System.out.println(formattedDate);
 
 
     }
