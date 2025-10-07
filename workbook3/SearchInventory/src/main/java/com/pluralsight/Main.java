@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         // Create inventory list using an array list full of product
         // Create a scanner to take in user input
@@ -47,10 +47,10 @@ public class Main {
     }
 
     // Home screen method
-    public static void homeScreen(Scanner read, ArrayList<Product> inventory, int userInput) {
+    public static void homeScreen(Scanner read, ArrayList<Product> inventory, int userInput) throws Exception{
 
         while(userInput != 5) {
-            System.out.printf("Welcome to Nik's shop" +
+            System.out.printf("\nWelcome to Nik's shop" +
                     "\nWhat do you want to do?" +
                     "\n1 - List all products" +
                     "\n2 - Look up a product by its id" +
@@ -76,14 +76,19 @@ public class Main {
                     //break;
             }
         }
+
+        System.out.println("\nThank you for visiting have a great day");
     }
 
     // List all available product
     public static void listProducts(ArrayList<Product> inventory) throws Exception{
+
+        System.out.println("========Available Product========");
         for (Product product : inventory) {
             System.out.println(product);
         }
 
-        //
+        System.out.println("\nReturning to home screen....");
+        Thread.sleep(2000);
     }
 }
