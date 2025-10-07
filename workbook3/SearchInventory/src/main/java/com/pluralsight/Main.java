@@ -11,6 +11,9 @@ public class Main {
         ArrayList<Product> inventory = getInventory();
         Scanner read = new Scanner(System.in);
 
+        for (Product product : inventory) {
+            System.out.println(product);
+        }
 
     }
 
@@ -29,10 +32,17 @@ public class Main {
             // Delimiter
             String[] productData = input.split("\\|");
 
-            // Pass file data into product variables
-            inventory.add(new Product());
+            // Pass file data into input array to place in product object later
+            int productId = Integer.parseInt(productData[0]);
+            String name = productData[1];
+            double price = Double.parseDouble(productData[2]);
+
+            // Place input array values into product object
+            inventory.add(new Product(productId, name, price));
         }
 
+        fileReader.close();
+        bufferedReader.close();
         return inventory;
     }
 }
