@@ -15,7 +15,7 @@ public class Main {
     }
 
     // This method creates the array list of products to be put into inventory
-    public static ArrayList<Product> getInventory() {
+    public static ArrayList<Product> getInventory() throws IOException{
         ArrayList<Product> inventory = new ArrayList<Product>();
 
         // BufferedReader and FileReader creation to read from inventory.csv
@@ -24,7 +24,14 @@ public class Main {
         String input;
 
         // Read data into a product object and put it into the arraylist-inventory
+        while((input = bufferedReader.readLine()) != null) {
 
+            // Delimiter
+            String[] productData = input.split("\\|");
+
+            // Pass file data into product variables
+            inventory.add(new Product());
+        }
 
         return inventory;
     }
