@@ -2,6 +2,7 @@ package com.pluralsight;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -10,6 +11,9 @@ public class Main {
         // Create a scanner to take in user input
         ArrayList<Product> inventory = getInventory();
         Scanner read = new Scanner(System.in);
+
+        // Sort ArrayList by name a-z
+        inventory.sort(Comparator.comparing(Product::getName));
 
         for (Product product : inventory) {
             System.out.println(product);
