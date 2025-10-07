@@ -7,6 +7,11 @@ public class Product {
     private String name;
     private double price;
 
+    // Product constructor without parameters
+    public Product() {
+
+    }
+
     // Product constructor
     public Product(int id, String name, double price) {
         this.id = id;
