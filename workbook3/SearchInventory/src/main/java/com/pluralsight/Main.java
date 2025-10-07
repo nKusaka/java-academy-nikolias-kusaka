@@ -17,7 +17,12 @@ public class Main {
     public static ArrayList<Product> getInventory() {
         ArrayList<Product> inventory = new ArrayList<Product>();
 
-        inventory.add(new Product(1, "Keyboard", 40));
+        inventory.add(new Product(1, "Keyboard", 40.00));
+        inventory.add(new Product(2, "Mouse", 20.00));
+        inventory.add(new Product(3, "Monitor", 100.00));
+        inventory.add(new Product(4, "Computer", 500.00));
+        inventory.add(new Product(5, "Mousepad", 10.00));
 
+        return inventory;
     }
 }
