@@ -11,10 +11,9 @@ public class Main {
         // Create a scanner to take in user input
         ArrayList<Product> inventory = getInventory();
         Scanner read = new Scanner(System.in);
-        int userInput = 0;
 
         // Start program from homescreen
-        homeScreen(read, inventory, userInput);
+        homeScreen(read, inventory);
 
     }
 
@@ -47,10 +46,11 @@ public class Main {
         return inventory;
     }
 
-    // Home screen method
-    public static void homeScreen(Scanner read, ArrayList<Product> inventory, int userInput) throws Exception{
+    // Prints the homescreen for the user
+    public static void homeScreen(Scanner read, ArrayList<Product> inventory) throws Exception{
 
-        while(userInput != 5) {
+        int userInput;
+        do {
             System.out.printf("\nWelcome to Nik's shop" +
                     "\nWhat do you want to do?" +
                     "\n1 - List all products" +
@@ -76,7 +76,7 @@ public class Main {
                     inventory.add(addNewProduct(inventory, read));
                     break;
             }
-        }
+        } while(userInput != 5);
 
         System.out.println("\nThank you for visiting have a great day");
         read.close();
