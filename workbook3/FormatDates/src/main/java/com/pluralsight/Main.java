@@ -16,6 +16,7 @@ public class Main {
 
         // Output date and time
         System.out.println(formattedDate);
+        System.out.println(dateToday);
 
 
     }
