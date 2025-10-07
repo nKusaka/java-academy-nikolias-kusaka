@@ -70,10 +70,10 @@ public class Main {
                     findProductId(inventory, read);
                     break;
                 case 3:
-                    //priceRangeLookUp(inventory);
+                    priceRangeLookUp(inventory, read);
                     break;
                 case 4:
-                    //addNewProduct(inventory);
+                    addNewProduct(inventory, read);
                     break;
             }
         }
@@ -118,5 +118,40 @@ public class Main {
 
         System.out.println("\nReturning to home screen....");
         Thread.sleep(2000);
+    }
+
+    // Shows available products that are within a price range
+    public static void priceRangeLookUp(ArrayList<Product> inventory, Scanner read) throws Exception {
+
+        // This boolean is used in the for loop to see if an item was found therefore the message saying
+        // no items found will be displayed if an only if this is false
+        boolean itemsFound = false;
+
+        // Prompt user for their price range
+        System.out.printf("Please enter the lowest price for items you would like to see: ");
+        int lowestPrice = read.nextInt();
+        System.out.printf("Please enter the highest price for items you would like to see: ");
+        int highestPrice = read.nextInt();
+        System.out.println("============Displaying Products In Your Price Range============");
+
+        // Filter products by price
+        for(Product product: inventory){
+            if(product.getPrice() >= lowestPrice && product.getPrice() <= highestPrice) {
+                System.out.println(product);
+                itemsFound = true;
+            }
+        }
+
+        if(!itemsFound) {
+            System.out.println("No items were found in your price range");
+        }
+
+        System.out.println("\nReturning to home screen....");
+        Thread.sleep(2000);
+    }
+
+    // Adds a new product to the inventory, updates the ArrayList but not the original csv file
+    public static void addNewProduct(ArrayList<Product> inventory, Scanner read) throws Exception {
+
     }
 }
