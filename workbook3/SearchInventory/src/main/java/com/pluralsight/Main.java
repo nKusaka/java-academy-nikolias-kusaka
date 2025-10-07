@@ -100,18 +100,18 @@ public class Main {
         // Ask user to enter the id of the product they would like to see
         System.out.printf("Please enter the ID of the item you would like to see: ");
         int userInput = read.nextInt();
-        int counter = 0;
+        boolean productFound;
 
         // Finds the product with the corresponding id
         for (Product product : inventory) {
             if (userInput == product.getId()) {
                 System.out.println("=======Displaying Products Found=======");
                 System.out.println(product);
-                counter++;
+                productFound = true;
             }
         }
 
-        if (userInput != inventory.get(counter).getId()) {
+        if (!productFound) {
             System.out.println("\nUnable to find product returning to home screen....");
             Thread.sleep(2000);
         }
@@ -157,10 +157,11 @@ public class Main {
         read.nextLine();
         System.out.printf("Enter the name of the product you would like to add:");
         String name = read.nextLine();
-        read.nextLine();
         System.out.printf("Enter the price of the product you would like to add (do not add a dollar sign): ");
         double price = read.nextDouble();
 
+        System.out.println("\nYour product has been added to our inventory, returning to home screen....");
+        Thread.sleep(2000);
         return new Product(id, name, price);
     }
 }
