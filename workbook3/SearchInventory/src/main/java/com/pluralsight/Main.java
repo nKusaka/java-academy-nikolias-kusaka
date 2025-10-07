@@ -100,7 +100,7 @@ public class Main {
         // Ask user to enter the id of the product they would like to see
         System.out.printf("Please enter the ID of the item you would like to see: ");
         int userInput = read.nextInt();
-        boolean productFound;
+        boolean productFound = false;
 
         // Finds the product with the corresponding id
         for (Product product : inventory) {
