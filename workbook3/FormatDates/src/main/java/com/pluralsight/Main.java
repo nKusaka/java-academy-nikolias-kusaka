@@ -18,6 +18,13 @@ public class Main {
         System.out.println(formattedDate);
         System.out.println(dateToday);
 
+        // Reuse old formatter to change format of date
+        formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
+        formattedDate = dateToday.format(formatter);
+        System.out.println(formattedDate);
+
+        // Create new date time formatter to get time as well into date
+
 
     }
 }
