@@ -73,7 +73,7 @@ public class Main {
                     priceRangeLookUp(inventory, read);
                     break;
                 case 4:
-                    addNewProduct(inventory, read);
+                    inventory.add(addNewProduct(inventory, read));
                     break;
             }
         }
@@ -151,7 +151,16 @@ public class Main {
     }
 
     // Adds a new product to the inventory, updates the ArrayList but not the original csv file
-    public static void addNewProduct(ArrayList<Product> inventory, Scanner read) throws Exception {
+    public static Product addNewProduct(ArrayList<Product> inventory, Scanner read) throws Exception {
+        System.out.printf("Enter the ID of the product you would like to add (only numbers): ");
+        int id = read.nextInt();
+        read.nextLine();
+        System.out.printf("Enter the name of the product you would like to add:");
+        String name = read.nextLine();
+        read.nextLine();
+        System.out.printf("Enter the price of the product you would like to add (do not add a dollar sign): ");
+        double price = read.nextDouble();
 
+        return new Product(id, name, price);
     }
 }
