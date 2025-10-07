@@ -26,4 +26,9 @@ public class Product {
     public double getPrice() {
         return this.price;
     }
+
+    @Override
+    public String toString() {
+        return "ID:" + this.id + " " + this.name + " $" + this.price;
+    }
 }

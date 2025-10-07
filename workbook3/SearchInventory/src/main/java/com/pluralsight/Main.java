@@ -10,6 +10,9 @@ public class Main {
         ArrayList<Product> inventory = getInventory();
         Scanner read = new Scanner(System.in);
 
+        for (int i = 0; i < inventory.size(); i++) {
+            System.out.println(inventory.get(i));
+        }
 
     }
 
