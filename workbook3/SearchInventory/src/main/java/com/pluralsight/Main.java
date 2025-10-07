@@ -100,15 +100,22 @@ public class Main {
         // Ask user to enter the id of the product they would like to see
         System.out.printf("Please enter the ID of the item you would like to see: ");
         int userInput = read.nextInt();
+        int counter = 0;
 
         // Finds the product with the corresponding id
         for (Product product : inventory) {
             if (userInput == product.getId()) {
+                System.out.println("=======Displaying Products Found=======");
                 System.out.println(product);
+                counter++;
             }
         }
 
-        System.out.println("Could not find the product you were searching for.");
+        if (userInput != inventory.get(counter).getId()) {
+            System.out.println("\nUnable to find product returning to home screen....");
+            Thread.sleep(2000);
+        }
+
         System.out.println("\nReturning to home screen....");
         Thread.sleep(2000);
     }
