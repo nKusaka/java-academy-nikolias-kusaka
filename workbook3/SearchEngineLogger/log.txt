@@ -1,0 +1,4 @@
+2025-10-07 11:00:44 launch
+2025-10-07 11:00:49 search : What color is the sky
+2025-10-07 11:00:54 search : how far from californa to new york
+2025-10-07 11:00:54 exit
