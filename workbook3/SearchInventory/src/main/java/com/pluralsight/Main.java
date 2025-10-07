@@ -13,6 +13,7 @@ public class Main {
         Scanner read = new Scanner(System.in);
         int userInput = 0;
 
+        // Start program from homescreen
         homeScreen(read, inventory, userInput);
 
     }
@@ -66,18 +67,19 @@ public class Main {
                     listProducts(inventory);
                     break;
                 case 2:
-                   // findProductId(inventory);
-                    //break;
+                    findProductId(inventory, read);
+                    break;
                 case 3:
-                   // priceRangeLookUp(inventory);
-                   // break;
+                    //priceRangeLookUp(inventory);
+                    break;
                 case 4:
-                   // addNewProduct(inventory);
-                    //break;
+                    //addNewProduct(inventory);
+                    break;
             }
         }
 
         System.out.println("\nThank you for visiting have a great day");
+        read.close();
     }
 
     // List all available product
@@ -88,6 +90,25 @@ public class Main {
             System.out.println(product);
         }
 
+        System.out.println("\nReturning to home screen....");
+        Thread.sleep(2000);
+    }
+
+    // Shows a product based on the id the user selects
+    public static void findProductId(ArrayList<Product> inventory, Scanner read) throws Exception {
+
+        // Ask user to enter the id of the product they would like to see
+        System.out.printf("Please enter the ID of the item you would like to see: ");
+        int userInput = read.nextInt();
+
+        // Finds the product with the corresponding id
+        for (Product product : inventory) {
+            if (userInput == product.getId()) {
+                System.out.println(product);
+            }
+        }
+
+        System.out.println("Could not find the product you were searching for.");
         System.out.println("\nReturning to home screen....");
         Thread.sleep(2000);
     }
