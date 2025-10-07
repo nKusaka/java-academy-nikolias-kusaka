@@ -11,13 +11,9 @@ public class Main {
         // Create a scanner to take in user input
         ArrayList<Product> inventory = getInventory();
         Scanner read = new Scanner(System.in);
+        int userInput = 0;
 
-        // Sort ArrayList by name a-z
-        inventory.sort(Comparator.comparing(Product::getName));
-
-        for (Product product : inventory) {
-            System.out.println(product);
-        }
+        homeScreen(read, inventory, userInput);
 
     }
 
@@ -48,5 +44,46 @@ public class Main {
         fileReader.close();
         bufferedReader.close();
         return inventory;
+    }
+
+    // Home screen method
+    public static void homeScreen(Scanner read, ArrayList<Product> inventory, int userInput) {
+
+        while(userInput != 5) {
+            System.out.printf("Welcome to Nik's shop" +
+                    "\nWhat do you want to do?" +
+                    "\n1 - List all products" +
+                    "\n2 - Look up a product by its id" +
+                    "\n3 - Find all products within a price range" +
+                    "\n4 - Add a new product" +
+                    "\n5 - Quit the application" +
+                    "\nEnter command: ");
+
+            userInput = read.nextInt();
+
+            switch (userInput) {
+                case 1:
+                    listProducts(inventory);
+                    break;
+                case 2:
+                   // findProductId(inventory);
+                    //break;
+                case 3:
+                   // priceRangeLookUp(inventory);
+                   // break;
+                case 4:
+                   // addNewProduct(inventory);
+                    //break;
+            }
+        }
+    }
+
+    // List all available product
+    public static void listProducts(ArrayList<Product> inventory) throws Exception{
+        for (Product product : inventory) {
+            System.out.println(product);
+        }
+
+        //
     }
 }
