@@ -7,12 +7,10 @@ public class Main {
     // Runs/Starts the program
     public static void main(String[] args) throws Exception {
 
-        // Create variables to be used globally in program
+        // Create variables to be used globally in program and start the program from homescreen
         HashMap<String, Product> inventory = loadInventory();
         Scanner read = new Scanner(System.in);
         HomeScreen(inventory, read);
-
-
     }
 
     // Loads hashmap with inventory list giving each name of the product a key that will
