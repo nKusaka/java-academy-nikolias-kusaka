@@ -47,7 +47,7 @@ public class Main {
     }
 
     // Prints the homescreen for the user
-    public static void homeScreen(Scanner read, ArrayList<Product> inventory) throws Exception{
+    public static void homeScreen(Scanner read, ArrayList<Product> inventory) throws Exception {
 
         int userInput;
         do {
