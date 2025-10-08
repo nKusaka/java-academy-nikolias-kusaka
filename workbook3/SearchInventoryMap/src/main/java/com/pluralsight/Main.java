@@ -1,7 +1,13 @@
 package com.pluralsight;
+import java.io.*;
+import java.util.*;
 
-public class Main {
-    public static void main(String[] args) {
+public class Main {ing[] args) {
 
+    public static void main(Str
+    }
+
+    public static Product loadInventory(Product inventory) {
+        FileReader
     }
 }
