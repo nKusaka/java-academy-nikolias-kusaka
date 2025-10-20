@@ -50,9 +50,11 @@ public class Reservation {
 
     public double getReservationTotal() {
        if (this.roomType.equalsIgnoreCase("king")) {
-           return 139.00 * this.getNumberOfNights();
+           reservationTotal = 139 * this.getNumberOfNights();
+           return reservationTotal;
        } else {
-           return 124.00 * this.getNumberOfNights();
+           reservationTotal = 124 * this.getNumberOfNights();
+           return reservationTotal;
        }
     }
 
