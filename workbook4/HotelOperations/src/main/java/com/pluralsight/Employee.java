@@ -80,11 +80,7 @@ public class Employee {
         }
     }
 
-    public void punchIn(double time) {
-        this.hoursWorked += time;
-    }
-
-    public void punchOut(double time) {
-        this.hoursWorked += time;
+    public void punchTimeCard(double time) {
+        hoursWorked += time;
     }
 }
