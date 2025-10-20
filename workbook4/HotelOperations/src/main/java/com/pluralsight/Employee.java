@@ -79,4 +79,12 @@ public class Employee {
             return 0;
         }
     }
+
+    public void punchIn(double time) {
+        this.hoursWorked += time;
+    }
+
+    public void punchOut(double time) {
+        this.hoursWorked += time;
+    }
 }
