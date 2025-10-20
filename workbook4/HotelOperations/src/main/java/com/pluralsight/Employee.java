@@ -1,7 +1,11 @@
 package com.pluralsight;
+import java.time.*;
+import java.time.format.*;
 
 public class Employee {
 
+    private LocalTime startTime;
+    private LocalTime endTime;
     private int employeeId;
     private String name;
     private String department;
@@ -80,7 +84,26 @@ public class Employee {
         }
     }
 
-    public void punchTimeCard(double time) {
-        hoursWorked += time;
+    public void punchIn(double time) {
+        this.hoursWorked += time;
+    }
+
+    public void punchOut(double time) {
+        this.hoursWorked += time;
+    }
+
+    public void punchIn() {
+        this.startTime = LocalTime.now();
+    }
+
+    public void punchOut() {
+
+        this.endTime = LocalTime.now();
+        Duration diff = Duration.between(startTime, endTime);
+
+        double hours = diff.toHours();
+
+        this.hoursWorked += hours;
+
     }
 }
