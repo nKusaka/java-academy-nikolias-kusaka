@@ -10,7 +10,7 @@ public class Hand {
         cards = new ArrayList<>();
     }
 
-    public void Deal(Card card) {
+    public void deal(Card card) {
         cards.add(card);
     }
 

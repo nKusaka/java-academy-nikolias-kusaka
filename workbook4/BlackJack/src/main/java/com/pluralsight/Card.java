@@ -20,21 +20,18 @@ public class Card {
     }
 
     public String getValue() {
-        if(isFaceUp) {
             return this.value;
-        }
-        return "#";
     }
 
     public int getPointValue() {
-        if(isFaceUp) {
-            switch(getValue()){
-                case "A":
-                    return 11;
+
+        switch(getValue()){
+            case "A":
+                return 11;
                 case "K", "Q", "J":
                     return 10;
             }
-        }
+
         return Integer.parseInt(getValue());
     }
 
