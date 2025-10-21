@@ -21,7 +21,7 @@ public class Hand {
     public int getValue() {
         int value = 0;
         boolean isAce = false;
-
+        boolean aceCheck = false;
         for (Card cardInHand: cards) {
             cardInHand.flip();
 
@@ -32,9 +32,10 @@ public class Hand {
             value += cardInHand.getPointValue();
         }
 
-        if (isAce && value > 21) {
+        if (isAce && value > 21 && !aceCheck) {
             value -= 10;
         }
+        aceCheck = true;
         return value;
     }
 }
