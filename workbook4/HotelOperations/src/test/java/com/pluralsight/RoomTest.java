@@ -8,8 +8,6 @@ class RoomTest {
         //arrange
         Room room1 = new Room();
         boolean isOccupied = true;
-        boolean isDirty = true;
-        boolean isAvailable = false;
 
         //act
         room1.checkIn();
@@ -18,6 +16,32 @@ class RoomTest {
         assertEquals(isOccupied, room1.isOccupied());
         assertTrue(room1.isDirty());
         assertFalse(room1.isAvailable());
+    }
+
+    @Test
+    void checkOut_OccupiedIs_False_DirtyIs_False_and_AvailableIs_True() {
+        //arrange
+        Room room = new Room();
+
+        //act
+        room.checkOut();
+
+        //assert
+        assertFalse(room.isOccupied());
+        assertFalse(room.isDirty());
+        assertTrue(room.isAvailable());
+    }
+
+    @Test
+    void cleanRoom_DirtyIs_False() {
+        //arrange
+        Room room = new Room();
+
+        //act
+        room.cleanroom();
+
+        //assert
+        assertFalse(room.isDirty());
     }
 
 }
