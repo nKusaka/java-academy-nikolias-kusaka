@@ -17,7 +17,9 @@ public class Room {
     }
 
     public Room() {
-
+        this.isOccupied = false;
+        this.isDirty = false;
+        this.isAvailable = true;
     }
 
     public int getNumberOfBeds() {
