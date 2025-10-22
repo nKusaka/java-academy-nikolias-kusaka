@@ -5,13 +5,19 @@ import java.util.ArrayList;
 public class Hand {
 
     private ArrayList<Card> cards;
+    private int playerNumber;
 
-    public Hand() {
+    public Hand(int playerNumber) {
         cards = new ArrayList<>();
+        this.playerNumber = playerNumber;
     }
 
     public void deal(Card card) {
         cards.add(card);
+    }
+
+    public int getPlayerNumber() {
+        return this.playerNumber;
     }
 
     public int getSize() {
