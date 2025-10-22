@@ -1,5 +1,6 @@
 package com.pluralsight;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -9,8 +10,6 @@ public class Main {
         Dealer dealer = new Dealer();
         Scanner read = new Scanner(System.in);
         boolean playerChoice = true;
-        int[] losers;
-        int loserCounter = 0;
         int counter = 1;
 
 
@@ -21,10 +20,9 @@ public class Main {
         read.nextLine();
 
         ArrayList<Hand> players = new ArrayList<Hand>();
-        losers = new int[userInput];
 
         for (int i = 0; i < userInput; i++) {
-            players.add(new Hand());
+            players.add(new Hand(i + 1));
         }
 
         for (Hand player: players) {
@@ -41,7 +39,7 @@ public class Main {
 
         for (int i = 0; i < players.size(); i++) {
             while (playerChoice && players.get(i).getValue() < 21) {
-                System.out.println("Player " + counter + " total: " + players.get(i).getValue());
+                System.out.println("Player " + players.get(i).getPlayerNumber() + " total: " + players.get(i).getValue());
                 System.out.printf("Would you like another card? 1 for yes 0 for no ");
                 int userChoice = read.nextInt();
                 read.nextLine();
@@ -56,23 +54,24 @@ public class Main {
 
                 if (players.get(i).getValue() > 21) {
                     System.out.println("Player " + counter + " busted out");
-                    losers[i] = loserCounter;
-
                 }
             }
 
-            loserCounter++;
             counter++;
             playerChoice = true;
         }
 
-        for (int loser: losers) {
-            players.remove(loser);
+        System.out.println("Player totals: ");
+        for (Hand player: players) {
+            if (player.getValue() > 21) {
+                System.out.println("Player " + player.getPlayerNumber() + ": " + player.getValue() + " busted out");
+            } else {
+                System.out.println("Player " + player.getPlayerNumber() + ": " + player.getValue());
+            }
         }
-        counter = 1;
+        players.removeIf(player -> player.getValue() > 21);
 
-
-        while (dealer.getValue() <= 16 && players.isEmpty()) {
+        while (dealer.getValue() <= 16 && !players.isEmpty()) {
             System.out.println("Dealer taking cards: " + dealer.getValue());
             Card card = deck.deal();
             dealer.deal(card);
@@ -81,20 +80,24 @@ public class Main {
 
         if (dealer.getValue() > 21) {
             System.out.println("Dealer total: " + dealer.getValue());
-            System.out.println("Dealer busts all remaining players win");
-            return;
-        }
-
-        System.out.println("Dealer total: " + dealer.getValue());
-        for (Hand player: players) {
-            if (player.getValue() > dealer.getValue()) {
-                System.out.println("Player " + counter + " wins!");
-            } else {
-                System.out.println("Player " + counter + " loses!");
+            System.out.println("Dealer busts");
+            for (Hand player: players) {
+                System.out.println("Player " + player.getPlayerNumber() + " wins");
             }
-            counter ++;
         }
 
+
+
+        if (!players.isEmpty() && dealer.getValue() <= 21){
+            System.out.println("Dealer total: " + dealer.getValue());
+            for (Hand player: players) {
+                if (player.getValue() > dealer.getValue()) {
+                    System.out.println("Player " + player.getPlayerNumber() + " wins!");
+                }   else {
+                    System.out.println("Player " + player.getPlayerNumber() + " loses!");
+                }
+            }
+        }
         if (players.isEmpty()) {
             System.out.println("Dealer wins");
         }
