@@ -8,6 +8,7 @@ public class Main {
         Dealer dealer = new Dealer();
         Scanner read = new Scanner(System.in);
         boolean playerChoice = true;
+        boolean[] wins;
         int counter = 1;
 
 
@@ -18,6 +19,7 @@ public class Main {
         read.nextLine();
 
         Hand[] players = new Hand[userInput];
+        wins = new boolean[userInput];
 
         for (int i = 0; i < userInput; i++) {
             players[i] = new Hand();
@@ -35,21 +37,26 @@ public class Main {
             dealer.deal(card);
         }
 
-        for (Hand player: players) {
-            while (playerChoice && player.getValue() < 21) {
-                System.out.println("Player " + counter + " total: " + player.getValue());
+        for (int i = 0; i < players.length; i++) {
+            while (playerChoice && players[i].getValue() < 21) {
+                System.out.println("Player " + counter + " total: " + players[i].getValue());
                 System.out.printf("Would you like another card? 1 for yes 0 for no ");
                 int userChoice = read.nextInt();
                 read.nextLine();
 
 
-                if (player.getValue() >= 21 || userChoice == 0) {
+                if (players[i].getValue() >= 21 || userChoice == 0) {
                     playerChoice = false;
                 } else {
                     Card card = deck.deal();
-                    player.deal(card);
+                    players[i].deal(card);
                 }
-                System.out.println("Player " + counter + " total: " + player.getValue());
+                System.out.println("Player " + counter + " total: " + players[i].getValue());
+
+                if (players[i].getValue() > 21) {
+                    wins[i] = false;
+                    System.out.println("Player " + counter + " busted out");
+                }
             }
 
             counter++;
@@ -57,6 +64,8 @@ public class Main {
         }
 
         counter = 1;
+
+
         while (dealer.getValue() <= 16) {
             System.out.println("Dealer taking cards: " + dealer.getValue());
             Card card = deck.deal();
@@ -66,7 +75,7 @@ public class Main {
 
         if (dealer.getValue() > 21) {
             System.out.println("Dealer total: " + dealer.getValue());
-            System.out.println("Dealer busts all players win");
+            System.out.println("Dealer busts all remaining players win");
             return;
         }
 
