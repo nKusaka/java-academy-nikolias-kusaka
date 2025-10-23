@@ -23,7 +23,7 @@ public class Saiyan {
         }
     }
 
-    public int getTotalSaiyans() {
-        return totalSaiyans;
+    public static void showTotalSaiyans() {
+        System.out.println("The total amount of saiyans is: " + totalSaiyans);
     }
 }
