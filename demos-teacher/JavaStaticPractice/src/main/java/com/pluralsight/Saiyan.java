@@ -5,37 +5,45 @@ import java.util.ArrayList;
 public class Saiyan {
 
     // instance variables unique for any saiyan
-    private String name;
-    private int powerLevel;
+    private String name;  //
+    private int powerlevel;
 
-    // static variables - shared by ALl saiyans
+    // static variables - shared by ALL Saiyans
     private static int totalSaiyans = 0;
-    private static ArrayList<Saiyan> allSaiyans = new ArrayList<>();
 
-    public Saiyan(String name, int powerLevel) {
-        this.name = name;
-        this.powerLevel = powerLevel;
+    static ArrayList<Saiyan> allSaiyans = new ArrayList<>();
+
+    public Saiyan(String _name, int _powerlevel) {
+        this.name = _name;
+        this.powerlevel = _powerlevel;
         totalSaiyans++; // One extra saiyan has been created +1
         allSaiyans.add(this);
     }
 
-    public void setPowerLevel(int powerLevel) {
-        if (powerLevel > 0) {
-            this.powerLevel = powerLevel;
-        }
-    }
-
-    public static void showAllSaiyansStats() {
-        for (Saiyan saiyan: allSaiyans) {
-            saiyan.showStats();
-        }
-    }
-
-    public void showStats() {
-        System.out.println(this.name + " " + this.powerLevel);
-    }
-
     public static void showTotalSaiyans() {
         System.out.println("The total amount of saiyans is: " + totalSaiyans);
+    }
+
+    public void setPowerlevel(int powerlevel) {
+        if(powerlevel > 0) {
+            this.powerlevel = powerlevel;
+        }
+    }
+
+
+    public static void showAllSaiyansStats() {
+        for(Saiyan s : allSaiyans)
+        {
+            s.showStats();
+        }
+
+    }
+    //Show stats of Goku
+    public void showStats() {
+        //non-static is values that belongs to the object
+        // static measn generic information not a particilar saiyan or object.
+
+        System.out.println("Name: " + this.name);
+        System.out.println("Powerlevel: " + this.powerlevel);
     }
 }
