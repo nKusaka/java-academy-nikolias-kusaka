@@ -61,10 +61,10 @@ public class UserInterface {
                     processGetAllVehiclesRequest();
                     break;
                 case "8":
-                    processAddVehicleRequest();
+                    processAddVehicleRequest(read);
                     break;
                 case "9":
-                    processRemoveVehicleRequest();
+                    processRemoveVehicleRequest(read);
                     break;
                 case "x":
                     break;
@@ -149,14 +149,65 @@ public class UserInterface {
         displayVehicles(dealership.getAllVehicles());
     }
 
-    // Calls dealership method to add a vehicle to the dealership
-    public void processAddVehicleRequest() {
+    // Calls dealership method to add a vehicle to the dealership checks that last 5 digits of vin number is unique
+    public void processAddVehicleRequest(Scanner read) {
 
+        System.out.printf("Enter the last 5 vin numbers for the vehicle: ");
+        int vin = read.nextInt();
+        read.nextLine();
+        boolean isValid = false;
+
+        Integer[] vinArray = dealership.getAllVehiclesVin();
+
+        do {
+            for (int i = 0; i < vinArray.length - 1; i++) {
+                if (vin == vinArray[i]) {
+                    System.out.printf("Invalid vin number try again: ");
+                    vin = read.nextInt();
+                } else {
+                    isValid = true;
+                    read.nextLine();
+                }
+            }
+        } while (isValid = false);
+
+        System.out.printf("Enter the year the vehicle was made: ");
+        int year = read.nextInt();
+        read.nextLine();
+
+        System.out.printf("Enter the make of the vehicle: ");
+        String make = read.nextLine();
+
+        System.out.printf("Enter the model of the vehicle: ");
+        String model = read.nextLine();
+
+        System.out.printf("Enter the type of vehicle: ");
+        String vehicleType = read.nextLine();
+
+        System.out.printf("Enter the color of the vehicle: ");
+        String color = read.nextLine();
+
+        System.out.printf("Enter the mileage on the vehicle: ");
+        int odometer = read.nextInt();
+        read.nextLine();
+
+        System.out.printf("Enter the price of the vehicle: ");
+        double price = read.nextDouble();
+        read.nextLine();
+
+        dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
+        System.out.println("Successfully added vehicle to the dealership");
     }
 
     // Calls dealership method to remove a vehicle from the dealership
-    public void processRemoveVehicleRequest() {
-
+    public void processRemoveVehicleRequest(Scanner read) {
+        System.out.printf("Enter the vin number for the vehicle you would like to remove: ");
+        int vin = read.nextInt();
+        read.nextLine();
+        dealership.removeVehicle(vin);
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        dealershipFileManager.saveDealership(dealership);
+        System.out.println("Successfully removed vehicle from the dealership");
     }
 
     // Helper method to display the vehicles in a neat way
