@@ -105,7 +105,7 @@ public class UserInterface {
     }
 
     public void processGetAllVehiclesRequest() {
-
+        displayVehicles(dealership.getAllVehicles());
     }
 
     public void processAddVehicleRequest() {
