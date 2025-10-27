@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Dealership {
@@ -61,12 +62,18 @@ public class Dealership {
         return inventory;
     }
 
-    void addVehicle(Vehicle vehicle) {
+    public Integer[] getAllVehiclesVin() {
+        return inventory.stream()
+                .map(Vehicle::getVin)
+                .toArray(Integer[]::new);
+    }
+
+    public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
     }
 
-    void removeVehicle(Vehicle vehicle) {
-        inventory.remove(vehicle);
+    public void removeVehicle(int vin) {
+        inventory.removeIf(vehicle -> vehicle.getVin() == vin);
     }
 
     public void setName(String name) {

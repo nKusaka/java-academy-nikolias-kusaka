@@ -47,4 +47,18 @@ public class DealershipFileManager {
 
         return new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
     }
+
+    public void saveDealership(Dealership dealership) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("inventory.csv"))) {
+            bufferedWriter.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone() + "\n");
+
+            for (Vehicle vehicle: dealership.getAllVehicles()) {
+                bufferedWriter.write(vehicle.getVehicleType() + "|" + vehicle.getYear() + "|" + vehicle.getMake() + "|"
+                + vehicle.getModel() + "|" + vehicle.getVehicleType() + "|" + vehicle.getColor() + "|" + vehicle.getOdometer() + "|"
+                + String.format("%.2f",vehicle.getPrice()) + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to save inventory/dealership list to file");
+        }
+    }
 }
