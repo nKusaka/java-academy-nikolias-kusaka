@@ -2,11 +2,21 @@ package com.pluralsight;
 
 public class Vehicle {
 
+    // Instantiate variables
     private String color;
     int numberOfPassengers;
     int cargoCapacity;
     int fuelCapacity;
 
+    // Parameterized Constructor
+    public Vehicle(String color, int numberOfPassengers, int cargoCapacity, int fuelCapacity) {
+        this.color = color;
+        this.numberOfPassengers = numberOfPassengers;
+        this.cargoCapacity = cargoCapacity;
+        this.fuelCapacity = fuelCapacity;
+    }
+
+    // Setters and Getters
     public String getColor() {
         return color;
     }
