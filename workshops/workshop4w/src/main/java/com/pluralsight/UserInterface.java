@@ -4,14 +4,17 @@ public class UserInterface {
 
     private Dealership dealership;
 
+    // Default Constructor
     public UserInterface() {
 
     }
 
+    // Parameterized Constructor
     public UserInterface(Dealership dealership) {
         this.dealership = dealership;
     }
 
+    // Creates the display menu for the user and asks for user input on what they would like to do
     public void display() throws Exception {
         init();
         String userInput = "";
@@ -40,19 +43,19 @@ public class UserInterface {
                     processGetByPriceRequest(read);
                     break;
                 case "2":
-                    processGetByMakeModelRequest();
+                    processGetByMakeModelRequest(read);
                     break;
                 case "3":
-                    processGetByYearRequest();
+                    processGetByYearRequest(read);
                     break;
                 case "4":
-                    processGetByColorRequest();
+                    processGetByColorRequest(read);
                     break;
                 case "5":
-                    processGetByMileageRequest();
+                    processGetByMileageRequest(read);
                     break;
                 case "6":
-                    processGetByVehicleTypeRequest();
+                    processGetByVehicleTypeRequest(read);
                     break;
                 case "7":
                     processGetAllVehiclesRequest();
@@ -72,6 +75,7 @@ public class UserInterface {
         }
     }
 
+    // Calls dealership method to get vehicles by price and takes in input from the user
     public void processGetByPriceRequest(Scanner read) {
 
         System.out.printf("Enter the minimum price for the vehicles you are looking for: ");
@@ -84,47 +88,94 @@ public class UserInterface {
         displayVehicles(dealership.getVehiclesByPrice(min, max));
     }
 
-    public void processGetByMakeModelRequest() {
+    // Calls dealership method to get vehicles by make and model and takes in input from the user
+    public void processGetByMakeModelRequest(Scanner read) {
 
+        System.out.printf("Enter the make of the vehicle you are looking for: ");
+        String make = read.nextLine();
+
+        System.out.printf("Enter the model of the vehicle you are looking for: ");
+        String model = read.nextLine();
+
+        displayVehicles(dealership.getVehiclesByMakeModel(make,model));
     }
 
-    public void processGetByYearRequest() {
+    // Calls dealership method to get vehicles by year and takes in input from the user
+    public void processGetByYearRequest(Scanner read) {
 
+        System.out.printf("Enter the minimum year for vehicles you are looking for: ");
+        int minYear = read.nextInt();
+
+        System.out.printf("Enter the maximum year for vehicles you are looking for: ");
+        int maxYear = read.nextInt();
+        read.nextLine();
+
+        displayVehicles(dealership.getVehiclesByYear(minYear, maxYear));
     }
 
-    public void processGetByColorRequest() {
+    // Calls dealership method to get vehicles by color and takes in input from the user
+    public void processGetByColorRequest(Scanner read) {
 
+        System.out.printf("Enter the color of vehicles you are a looking for: ");
+        String color = read.nextLine();
+
+        displayVehicles(dealership.getVehiclesByColor(color));
     }
 
-    public void processGetByMileageRequest() {
+    // Calls dealership method to get vehicles by mileage and takes in input from the user
+    public void processGetByMileageRequest(Scanner read) {
 
+        System.out.printf("Enter the minimum mileage of vehicles you are looking for: ");
+        int minMileage = read.nextInt();
+
+        System.out.printf("Enter the maximum mileage of vehicles you are looking for: ");
+        int maxMileage = read.nextInt();
+        read.nextLine();
+
+        displayVehicles(dealership.getVehiclesByMileage(minMileage, maxMileage));
     }
 
-    public void processGetByVehicleTypeRequest() {
+    // Calls dealership method to get vehicles by type and takes in input from the user
+    public void processGetByVehicleTypeRequest(Scanner read) {
 
+        System.out.printf("Enter the type of vehicle you are looking for: ");
+        String vehicleType = read.nextLine();
+
+        displayVehicles(dealership.getVehiclesByType(vehicleType));
     }
 
+    // Calls dealership method to get all vehicles
     public void processGetAllVehiclesRequest() {
         displayVehicles(dealership.getAllVehicles());
     }
 
+    // Calls dealership method to add a vehicle to the dealership
     public void processAddVehicleRequest() {
 
     }
 
+    // Calls dealership method to remove a vehicle from the dealership
     public void processRemoveVehicleRequest() {
 
     }
 
+    // Helper method to display the vehicles in a neat way
     private void displayVehicles(ArrayList<Vehicle> inventory) {
         System.out.printf("%-10s %-10s %-10s %-12s %-20s %-10s %-14s %-10s\n", "VIN", "YEAR", "MAKE", "MODEL",
                 "VEHICLE TYPE", "COLOR", "ODOMETER", "PRICE");
-        for (Vehicle vehicle: inventory) {
+
+        if (inventory.isEmpty()) {
+            System.out.println("There were no vehicles matching your search");
+        } else {
+            for (Vehicle vehicle: inventory) {
             System.out.printf("%-10d %-10d %-10s %-12s %-20s %-10s %-14d %-10.2f\n", vehicle.getVin(), vehicle.getYear(), vehicle.getMake(),
                     vehicle.getModel(), vehicle.getVehicleType(), vehicle.getColor(), vehicle.getOdometer(), vehicle.getPrice());
+            }
         }
     }
 
+    // init method that loads the dealership object by creating a dealershipfilemanager object and loading
+    // vehicles from inventory.csv
     private void init() {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         this.dealership = dealershipFileManager.getDealership();
