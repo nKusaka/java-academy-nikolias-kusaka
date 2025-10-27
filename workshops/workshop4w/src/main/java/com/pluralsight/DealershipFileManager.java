@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class DealershipFileManager {
 
-
     public Dealership getDealership() {
         Dealership dealership = new Dealership();
         String csvFile = "inventory.csv";

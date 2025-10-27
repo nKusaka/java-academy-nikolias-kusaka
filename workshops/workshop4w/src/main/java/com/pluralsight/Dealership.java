@@ -8,7 +8,7 @@ public class Dealership {
     private String name;
     private String address;
     private String phone;
-    private ArrayList<Vehicle> inventory;
+    private ArrayList<Vehicle> inventory = new ArrayList<>();
 
     public Dealership() {
 
