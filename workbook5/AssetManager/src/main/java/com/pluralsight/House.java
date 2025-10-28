@@ -58,6 +58,6 @@ public class House extends Asset {
 
     @Override
     public double getValue() {
-        return getOriginalCost() / squareFoot + (0.25 * lotSize);
+        return squareFoot *  + (0.25 * lotSize);
     }
 }
