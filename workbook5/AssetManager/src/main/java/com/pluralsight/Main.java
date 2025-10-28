@@ -12,8 +12,14 @@ public class Main {
         assets.add(new Vehicle("your car", "2012", 5000, "Honda civic", 2010, 10000));
 
         for (Asset asset: assets) {
-            System.out.printf("%s was acquired in %s, amount paid was %.2f, and its value today is %.2f\n",
-                    asset.getDescription(), asset.getDateAcquired(), asset.getOriginalCost(), asset.getValue());
+            if (asset instanceof House) {
+                System.out.println(asset.getDescription() + " the address is " + ((House) asset).getAddress() +
+                        " the price per square foot of the house is $" + asset.getValue());
+            }
+            if (asset instanceof Vehicle) {
+                System.out.println(asset.getDescription() + " the make and model of the vehicle is " + ((Vehicle) asset).getMakeModel()
+                + " the price of the car now is $" + asset.getValue());
+            }
         }
 
 
