@@ -7,7 +7,7 @@ public class LeaseContract extends Contract {
     private BigDecimal expectedEndingValue;
     private final BigDecimal leaseFee = BigDecimal.valueOf(1.07);
 
-    public LeaseContract(String date, String customerName, String customerEmail, Vehicle vehicleSold, boolean isFinanced) {
+    public LeaseContract(String date, String customerName, String customerEmail, Vehicle vehicleSold) {
         super(date, customerName, customerEmail, vehicleSold);
     }
 
@@ -45,11 +45,9 @@ public class LeaseContract extends Contract {
                 .add(leaseFee);
     }
 
-    public BigDecimal expectedEndingValue() {
+    public BigDecimal getExpectedEndingValue() {
         BigDecimal depreciate = BigDecimal.valueOf(0.50);
         return (BigDecimal.valueOf(getVehicleSold().getPrice()).multiply(depreciate));
     }
-
-
 
 }

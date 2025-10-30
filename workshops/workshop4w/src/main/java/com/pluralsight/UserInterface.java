@@ -2,7 +2,7 @@ package com.pluralsight;
 import java.util.*;
 
 public class UserInterface {
-
+    static Scanner read = new Scanner(System.in);
     private Dealership dealership;
 
     // Default Constructor
@@ -19,7 +19,7 @@ public class UserInterface {
     public void display() throws Exception {
         init();
         String userInput = "";
-        Scanner read = new Scanner(System.in);
+
 
         while (!userInput.equalsIgnoreCase("x")) {
             System.out.println("""
@@ -43,10 +43,10 @@ public class UserInterface {
 
             switch(userInput) {
                 case "1":
-                    processGetByPriceRequest(read);
+                    processGetByPriceRequest();
                     break;
                 case "2":
-                    processGetByMakeModelRequest(read);
+                    processGetByMakeModelRequest();
                     break;
                 case "3":
                     processGetByYearRequest(read);
@@ -71,8 +71,10 @@ public class UserInterface {
                     break;
                 case "10":
                     processGetSalesContract(read);
+                    break;
                 case "11":
                     processGetLeaseContract(read);
+                    break;
                 case "x":
                     break;
                 default:
@@ -83,7 +85,7 @@ public class UserInterface {
     }
 
     // Calls dealership method to get vehicles by price and takes in input from the user
-    public void processGetByPriceRequest(Scanner read) {
+    public void processGetByPriceRequest() {
 
         System.out.printf("Enter the minimum price for the vehicles you are looking for: ");
         double min = read.nextDouble();
@@ -96,7 +98,7 @@ public class UserInterface {
     }
 
     // Calls dealership method to get vehicles by make and model and takes in input from the user
-    public void processGetByMakeModelRequest(Scanner read) {
+    public void processGetByMakeModelRequest() {
 
         System.out.printf("Enter the make of the vehicle you are looking for: ");
         String make = read.nextLine();
@@ -261,7 +263,7 @@ public class UserInterface {
         }while(!userInput.equalsIgnoreCase("yes") && !userInput.equalsIgnoreCase("no"));
         boolean isFinanced = userInput.equalsIgnoreCase("yes");
 
-        Contract salesContract = new SalesContract
+        SalesContract salesContract = new SalesContract
                 (date,
                 customerName,
                 customerEmail,
@@ -269,9 +271,9 @@ public class UserInterface {
                 isFinanced);
 
         System.out.printf("%-20s %-10s %-15s %-20s %-25s %-15s %-15s %-15s %-15s%n",
-                "VEHICLE PURCHASED", "VIN", "DATE", "TITLE HOLDER", "EMAIL ADDRESS",
+                "VEHICLE PURCHASED", "VIN", "DATE", "NAME", "EMAIL ADDRESS",
                 "ORIGINAL PRICE", "TOTAL PRICE", "MONTHLY PAYMENT", "DURATION");
-        System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f",
+        System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f%n",
                 dealership.getAllVehicles().get(vehicleArrayCounter).getMake() + " " +
                         dealership.getAllVehicles().get(vehicleArrayCounter).getModel(),
                 dealership.getAllVehicles().get(vehicleArrayCounter).getVin(),
@@ -294,6 +296,53 @@ public class UserInterface {
 
     // Calls LeaseContract method to process user request
     public void processGetLeaseContract(Scanner read) {
+
+        String userInput;
+        int vehicleArrayCounter =0;
+
+        System.out.printf("Enter your name: ");
+        String customerName = read.nextLine();
+
+        System.out.printf("Enter your email: ");
+        String customerEmail = read.nextLine();
+
+        System.out.printf("Enter the vin of the vehicle you would like to purchase: ");
+        int vin = read.nextInt();
+        read.nextLine();
+        for (Vehicle vehicle: dealership.getAllVehicles()) {
+            if (vin == vehicle.getVin()) {
+                break;
+            }
+            vehicleArrayCounter++;
+        }
+
+        System.out.printf("Enter todays date: ");
+        String date = read.nextLine();
+
+        LeaseContract leaseContract = new LeaseContract(
+                date,
+                customerName,
+                customerEmail,
+                dealership.getAllVehicles().get(vehicleArrayCounter));
+
+        System.out.printf("%-20s %-10s %-15s %-20s %-25s %-15s %-15s %-15s %-15s %-15s%n",
+                "VEHICLE PURCHASED", "VIN", "DATE", "NAME", "EMAIL ADDRESS",
+                "ORIGINAL PRICE", "TOTAL PRICE", "MONTHLY PAYMENT", "ENDING VALUE", "DURATION");
+
+        System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f $%-14.2f %-15s%n",
+                dealership.getAllVehicles().get(vehicleArrayCounter).getMake() + " " +
+                        dealership.getAllVehicles().get(vehicleArrayCounter).getModel(),
+                dealership.getAllVehicles().get(vehicleArrayCounter).getVin(),
+                date,
+                customerName,
+                customerEmail,
+                dealership.getAllVehicles().get(vehicleArrayCounter).getPrice(),
+                leaseContract.getTotalPrice().doubleValue(),
+                leaseContract.getMonthlyPayment().doubleValue(),
+                leaseContract.getExpectedEndingValue().doubleValue(),
+                "36 months");
+
+        dealership.removeVehicle(vin, dealership);
 
     }
 

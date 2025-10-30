@@ -1,5 +1,6 @@
 package com.pluralsight;
 import java.math.*;
+
 public class SalesContract extends Contract {
 
     private final BigDecimal salesTaxAmount = new BigDecimal("1.05");
@@ -62,29 +63,33 @@ public class SalesContract extends Contract {
     @Override
     public BigDecimal getTotalPrice() {
 
-        if (getVehicleSold().getPrice() >= 10000) {
-
-            BigDecimal months = BigDecimal.valueOf(48);
-            BigDecimal salesTax = BigDecimal.valueOf(1.05);
-            BigDecimal recordingFee = BigDecimal.valueOf(100);
-            BigDecimal processingFee = BigDecimal.valueOf(495);
-
-            return getMonthlyPayment()
-                    .multiply(months)
-                    .multiply(salesTax)
-                    .add(recordingFee)
-                    .add(processingFee);
+        if (!isFinanced) {
+            return BigDecimal.valueOf(getVehicleSold().getPrice());
         } else {
-            BigDecimal months = BigDecimal.valueOf(24);
-            BigDecimal salesTax = BigDecimal.valueOf(1.05);
-            BigDecimal recordingFee = BigDecimal.valueOf(100);
-            BigDecimal processingFee = BigDecimal.valueOf(295);
+            if (getVehicleSold().getPrice() >= 10000) {
 
-            return getMonthlyPayment()
-                    .multiply(months)
-                    .multiply(salesTax)
-                    .add(recordingFee)
-                    .add(processingFee);
+                BigDecimal months = BigDecimal.valueOf(48);
+                BigDecimal salesTax = BigDecimal.valueOf(1.05);
+                BigDecimal recordingFee = BigDecimal.valueOf(100);
+                BigDecimal processingFee = BigDecimal.valueOf(495);
+
+                return getMonthlyPayment()
+                        .multiply(months)
+                        .multiply(salesTax)
+                        .add(recordingFee)
+                        .add(processingFee);
+            } else {
+                BigDecimal months = BigDecimal.valueOf(24);
+                BigDecimal salesTax = BigDecimal.valueOf(1.05);
+                BigDecimal recordingFee = BigDecimal.valueOf(100);
+                BigDecimal processingFee = BigDecimal.valueOf(295);
+
+                return getMonthlyPayment()
+                        .multiply(months)
+                        .multiply(salesTax)
+                        .add(recordingFee)
+                        .add(processingFee);
+            }
         }
     }
 
