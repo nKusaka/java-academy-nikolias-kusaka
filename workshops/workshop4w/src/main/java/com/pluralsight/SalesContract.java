@@ -13,11 +13,25 @@ public class SalesContract extends Contract {
 
     @Override
     public BigDecimal getMonthlyPayment() {
+        if (!isFinanced) {
+            return new BigDecimal("0");
+        } else {
+            if (getVehicleSold().getPrice() >= 10000) {
+                BigDecimal rate = new BigDecimal("0.0425")
+                        .divide(new BigDecimal("12"));
+            } else {
 
+            }
+        }
     }
 
     @Override
     public BigDecimal getTotalPrice() {
+
+    }
+
+    @Override
+    public void displayContract() {
 
     }
 }
