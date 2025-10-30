@@ -8,6 +8,6 @@ public class Charizard extends Pokemon {
 
     @Override
     public String Attack() {
-        return "Flamethrower";
+        return "Flamethrower\n";
     }
 }
