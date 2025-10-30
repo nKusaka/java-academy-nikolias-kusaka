@@ -33,6 +33,8 @@ public class DealershipFileManager {
 
         } catch (IOException e){
             System.out.println("Could not read from file make sure formatting is correct");
+        } catch (Exception e) {
+            System.out.println("File has error please check");
         }
         if (dealership == null)
         {
@@ -59,7 +61,7 @@ public class DealershipFileManager {
             bufferedWriter.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone() + "\n");
 
             for (Vehicle vehicle: dealership.getAllVehicles()) {
-                bufferedWriter.write(vehicle.getVin() + "|" + "|" + vehicle.getYear() + "|" + vehicle.getMake() + "|"
+                bufferedWriter.write(vehicle.getVin() + "|" + vehicle.getYear() + "|" + vehicle.getMake() + "|"
                 + vehicle.getModel() + "|" + vehicle.getVehicleType() + "|" + vehicle.getColor() + "|" + vehicle.getOdometer() + "|"
                 + String.format("%.2f",vehicle.getPrice()) + "\n");
             }
