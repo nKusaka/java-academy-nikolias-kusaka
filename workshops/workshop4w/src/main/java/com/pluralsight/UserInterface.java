@@ -269,6 +269,22 @@ public class UserInterface {
                 customerEmail,
                 dealership.getAllVehicles().get(vehicleArrayCounter),
                 isFinanced);
+
+        System.out.printf("%-20s %-10s %-15s %-20s %-25s %-15s %-15s %-15s%n",
+                "VEHICLE PURCHASED", "VIN", "DATE", "TITLE HOLDER", "EMAIL ADDRESS",
+                "ORIGINAL PRICE", "TOTAL PRICE", "MONTHLY PAYMENT");
+        System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f%n",
+                dealership.getAllVehicles().get(vehicleArrayCounter).getMake() + " " +
+                        dealership.getAllVehicles().get(vehicleArrayCounter).getModel(),
+                dealership.getAllVehicles().get(vehicleArrayCounter).getVin(),
+                date,
+                customerName,
+                customerEmail,
+                dealership.getAllVehicles().get(vehicleArrayCounter).getPrice(),
+                salesContract.getTotalPrice(),
+                salesContract.getMonthlyPayment());
+
+                dealership.removeVehicle(vin);
     }
 
     // Calls LeaseContract method to process user request
