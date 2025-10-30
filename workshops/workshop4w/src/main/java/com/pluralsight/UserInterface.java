@@ -34,6 +34,8 @@ public class UserInterface {
                     7. Get all vehicles
                     8. Add a vehicle to the dealership
                     9. Remove a vehicle from the dealership
+                    10. Purchase a vehicle
+                    11. Lease a vehicle
                     X. to exit the application
                     ================================================================""");
             userInput = read.nextLine();
@@ -66,6 +68,10 @@ public class UserInterface {
                 case "9":
                     processRemoveVehicleRequest(read);
                     break;
+                case "10":
+                    processGetSalesContract(read);
+                case "11":
+                    processGetLeaseContract(read);
                 case "x":
                     break;
                 default:
@@ -223,6 +229,16 @@ public class UserInterface {
                     vehicle.getModel(), vehicle.getVehicleType(), vehicle.getColor(), vehicle.getOdometer(), vehicle.getPrice());
             }
         }
+    }
+
+    // Calls SalesContract method to process user request
+    public void processGetSalesContract(Scanner read) {
+
+    }
+
+    // Calls LeaseContract method to process user request
+    public void processGetLeaseContract(Scanner read) {
+
     }
 
     // init method that loads the dealership object by creating a dealershipfilemanager object and loading

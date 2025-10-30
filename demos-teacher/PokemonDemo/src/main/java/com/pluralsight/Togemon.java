@@ -8,6 +8,6 @@ public class Togemon extends Pokemon {
 
     @Override
     public String Attack() {
-        return "Punch";
+        return "Punch\n";
     }
 }
