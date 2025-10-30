@@ -1,5 +1,6 @@
 package com.pluralsight;
 import java.util.*;
+
 public class UserInterface {
 
     private Dealership dealership;
@@ -233,7 +234,41 @@ public class UserInterface {
 
     // Calls SalesContract method to process user request
     public void processGetSalesContract(Scanner read) {
+        String userInput;
+        int vehicleArrayCounter =0;
 
+        System.out.printf("Enter your name: ");
+        String customerName = read.nextLine();
+
+        System.out.printf("Enter your email: ");
+        String customerEmail = read.nextLine();
+
+        System.out.printf("Enter the vin of the vehicle you would like to purchase: ");
+        int vin = read.nextInt();
+        read.nextLine();
+        for (Vehicle vehicle: dealership.getAllVehicles()) {
+            if (vin == vehicle.getVin()) {
+                break;
+            }
+            vehicleArrayCounter++;
+        }
+
+        System.out.printf("Enter todays date: ");
+        String date = read.nextLine();
+
+        System.out.printf("Will you be financing the vehicle? enter yes or no: ");
+        do {
+            userInput = read.nextLine().toLowerCase();
+
+        }while(!userInput.equalsIgnoreCase("yes") && !userInput.equalsIgnoreCase("no"));
+        boolean isFinanced = userInput.equalsIgnoreCase("yes");
+
+        Contract salesContract = new SalesContract
+                (date,
+                customerName,
+                customerEmail,
+                dealership.getAllVehicles().get(vehicleArrayCounter),
+                isFinanced);
     }
 
     // Calls LeaseContract method to process user request
