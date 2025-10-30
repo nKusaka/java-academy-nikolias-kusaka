@@ -211,9 +211,7 @@ public class UserInterface {
         System.out.printf("Enter the vin number for the vehicle you would like to remove: ");
         int vin = read.nextInt();
         read.nextLine();
-        dealership.removeVehicle(vin);
-        DealershipFileManager dealershipFileManager = new DealershipFileManager();
-        dealershipFileManager.saveDealership(dealership);
+        dealership.removeVehicle(vin, dealership);
         System.out.println("Successfully removed vehicle from the dealership");
     }
 
@@ -270,10 +268,10 @@ public class UserInterface {
                 dealership.getAllVehicles().get(vehicleArrayCounter),
                 isFinanced);
 
-        System.out.printf("%-20s %-10s %-15s %-20s %-25s %-15s %-15s %-15s%n",
+        System.out.printf("%-20s %-10s %-15s %-20s %-25s %-15s %-15s %-15s %-15s%n",
                 "VEHICLE PURCHASED", "VIN", "DATE", "TITLE HOLDER", "EMAIL ADDRESS",
-                "ORIGINAL PRICE", "TOTAL PRICE", "MONTHLY PAYMENT");
-        System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f%n",
+                "ORIGINAL PRICE", "TOTAL PRICE", "MONTHLY PAYMENT", "DURATION");
+        System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f",
                 dealership.getAllVehicles().get(vehicleArrayCounter).getMake() + " " +
                         dealership.getAllVehicles().get(vehicleArrayCounter).getModel(),
                 dealership.getAllVehicles().get(vehicleArrayCounter).getVin(),
@@ -284,7 +282,14 @@ public class UserInterface {
                 salesContract.getTotalPrice(),
                 salesContract.getMonthlyPayment());
 
-                dealership.removeVehicle(vin);
+        if (dealership.getAllVehicles().get(vehicleArrayCounter).getPrice() >= 10000)
+        {
+            System.out.printf("%10s","48 months");
+        } else
+        {
+            System.out.printf("%10s", "24 months");
+        }
+                dealership.removeVehicle(vin, dealership);
     }
 
     // Calls LeaseContract method to process user request

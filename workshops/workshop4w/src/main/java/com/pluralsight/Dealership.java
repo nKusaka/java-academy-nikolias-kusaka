@@ -72,8 +72,10 @@ public class Dealership {
         inventory.add(vehicle);
     }
 
-    public void removeVehicle(int vin) {
+    public void removeVehicle(int vin, Dealership dealership) {
         inventory.removeIf(vehicle -> vehicle.getVin() == vin);
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        dealershipFileManager.saveDealership(dealership);
     }
 
     public void setName(String name) {

@@ -53,7 +53,7 @@ public class DealershipFileManager {
             bufferedWriter.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone() + "\n");
 
             for (Vehicle vehicle: dealership.getAllVehicles()) {
-                bufferedWriter.write(vehicle.getVehicleType() + "|" + vehicle.getYear() + "|" + vehicle.getMake() + "|"
+                bufferedWriter.write(vehicle.getVin() + "|"  + "|" + vehicle.getYear() + "|" + vehicle.getMake() + "|"
                 + vehicle.getModel() + "|" + vehicle.getVehicleType() + "|" + vehicle.getColor() + "|" + vehicle.getOdometer() + "|"
                 + String.format("%.2f",vehicle.getPrice()) + "\n");
             }
