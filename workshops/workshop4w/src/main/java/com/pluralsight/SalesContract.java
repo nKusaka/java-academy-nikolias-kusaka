@@ -63,11 +63,21 @@ public class SalesContract extends Contract {
     @Override
     public BigDecimal getTotalPrice() {
 
-        if (!isFinanced) {
-            return BigDecimal.valueOf(getVehicleSold().getPrice());
+        if (!isFinanced && getVehicleSold().getPrice() >= 10000) {
+            BigDecimal salesTaxAmount = BigDecimal.valueOf(getVehicleSold().getPrice() * 0.05);
+            return BigDecimal.valueOf(getVehicleSold().getPrice())
+                    .add(BigDecimal.valueOf(100))
+                    .add(BigDecimal.valueOf(495))
+                    .add(salesTaxAmount);
+        }
+        else if (!isFinanced && getVehicleSold().getPrice() < 10000) {
+            BigDecimal salesTaxAmount = BigDecimal.valueOf(getVehicleSold().getPrice() * 0.05);
+            return BigDecimal.valueOf(getVehicleSold().getPrice())
+                    .add(BigDecimal.valueOf(100))
+                    .add(BigDecimal.valueOf(295))
+                    .multiply(BigDecimal.valueOf(1.05));
         } else {
             if (getVehicleSold().getPrice() >= 10000) {
-
                 BigDecimal months = BigDecimal.valueOf(48);
                 BigDecimal salesTax = BigDecimal.valueOf(1.05);
                 BigDecimal recordingFee = BigDecimal.valueOf(100);
