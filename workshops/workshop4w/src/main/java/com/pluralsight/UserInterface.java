@@ -49,31 +49,31 @@ public class UserInterface {
                     processGetByMakeModelRequest();
                     break;
                 case "3":
-                    processGetByYearRequest(read);
+                    processGetByYearRequest();
                     break;
                 case "4":
-                    processGetByColorRequest(read);
+                    processGetByColorRequest();
                     break;
                 case "5":
-                    processGetByMileageRequest(read);
+                    processGetByMileageRequest();
                     break;
                 case "6":
-                    processGetByVehicleTypeRequest(read);
+                    processGetByVehicleTypeRequest();
                     break;
                 case "7":
                     processGetAllVehiclesRequest();
                     break;
                 case "8":
-                    processAddVehicleRequest(read);
+                    processAddVehicleRequest();
                     break;
                 case "9":
-                    processRemoveVehicleRequest(read);
+                    processRemoveVehicleRequest();
                     break;
                 case "10":
-                    processGetSalesContract(read);
+                    processGetSalesContract();
                     break;
                 case "11":
-                    processGetLeaseContract(read);
+                    processGetLeaseContract();
                     break;
                 case "x":
                     break;
@@ -110,7 +110,7 @@ public class UserInterface {
     }
 
     // Calls dealership method to get vehicles by year and takes in input from the user
-    public void processGetByYearRequest(Scanner read) {
+    public void processGetByYearRequest( ) {
 
         System.out.printf("Enter the minimum year for vehicles you are looking for: ");
         int minYear = read.nextInt();
@@ -123,7 +123,7 @@ public class UserInterface {
     }
 
     // Calls dealership method to get vehicles by color and takes in input from the user
-    public void processGetByColorRequest(Scanner read) {
+    public void processGetByColorRequest() {
 
         System.out.printf("Enter the color of vehicles you are a looking for: ");
         String color = read.nextLine();
@@ -132,7 +132,7 @@ public class UserInterface {
     }
 
     // Calls dealership method to get vehicles by mileage and takes in input from the user
-    public void processGetByMileageRequest(Scanner read) {
+    public void processGetByMileageRequest() {
 
         System.out.printf("Enter the minimum mileage of vehicles you are looking for: ");
         int minMileage = read.nextInt();
@@ -145,7 +145,7 @@ public class UserInterface {
     }
 
     // Calls dealership method to get vehicles by type and takes in input from the user
-    public void processGetByVehicleTypeRequest(Scanner read) {
+    public void processGetByVehicleTypeRequest() {
 
         System.out.printf("Enter the type of vehicle you are looking for: ");
         String vehicleType = read.nextLine();
@@ -159,7 +159,7 @@ public class UserInterface {
     }
 
     // Calls dealership method to add a vehicle to the dealership checks that last 5 digits of vin number is unique
-    public void processAddVehicleRequest(Scanner read) {
+    public void processAddVehicleRequest() {
 
         System.out.printf("Enter the last 5 vin numbers for the vehicle: ");
         int vin = read.nextInt();
@@ -209,7 +209,7 @@ public class UserInterface {
     }
 
     // Calls dealership method to remove a vehicle from the dealership
-    public void processRemoveVehicleRequest(Scanner read) {
+    public void processRemoveVehicleRequest() {
         System.out.printf("Enter the vin number for the vehicle you would like to remove: ");
         int vin = read.nextInt();
         read.nextLine();
@@ -233,7 +233,7 @@ public class UserInterface {
     }
 
     // Calls SalesContract method to process user request
-    public void processGetSalesContract(Scanner read) {
+    public void processGetSalesContract() {
         String userInput;
         int vehicleArrayCounter =0;
 
@@ -263,39 +263,18 @@ public class UserInterface {
         }while(!userInput.equalsIgnoreCase("yes") && !userInput.equalsIgnoreCase("no"));
         boolean isFinanced = userInput.equalsIgnoreCase("yes");
 
-        SalesContract salesContract = new SalesContract
+        Contract salesContract = new SalesContract
                 (date,
                 customerName,
                 customerEmail,
                 dealership.getAllVehicles().get(vehicleArrayCounter),
                 isFinanced);
 
-        System.out.printf("%-20s %-10s %-15s %-20s %-25s %-15s %-15s %-15s %-15s%n",
-                "VEHICLE PURCHASED", "VIN", "DATE", "NAME", "EMAIL ADDRESS",
-                "ORIGINAL PRICE", "TOTAL PRICE", "MONTHLY PAYMENT", "DURATION");
-        System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f%n",
-                dealership.getAllVehicles().get(vehicleArrayCounter).getMake() + " " +
-                        dealership.getAllVehicles().get(vehicleArrayCounter).getModel(),
-                dealership.getAllVehicles().get(vehicleArrayCounter).getVin(),
-                date,
-                customerName,
-                customerEmail,
-                dealership.getAllVehicles().get(vehicleArrayCounter).getPrice(),
-                salesContract.getTotalPrice(),
-                salesContract.getMonthlyPayment());
-
-        if (dealership.getAllVehicles().get(vehicleArrayCounter).getPrice() >= 10000)
-        {
-            System.out.printf("%10s","48 months");
-        } else
-        {
-            System.out.printf("%10s", "24 months");
-        }
-                dealership.removeVehicle(vin, dealership);
+        displayContracts(salesContract, vehicleArrayCounter, vin);
     }
 
     // Calls LeaseContract method to process user request
-    public void processGetLeaseContract(Scanner read) {
+    public void processGetLeaseContract() {
 
         String userInput;
         int vehicleArrayCounter =0;
@@ -319,33 +298,65 @@ public class UserInterface {
         System.out.printf("Enter todays date: ");
         String date = read.nextLine();
 
-        LeaseContract leaseContract = new LeaseContract(
+        Contract leaseContract = new LeaseContract(
                 date,
                 customerName,
                 customerEmail,
                 dealership.getAllVehicles().get(vehicleArrayCounter));
 
-        System.out.printf("%-20s %-10s %-15s %-20s %-25s %-15s %-15s %-15s %-15s %-15s%n",
-                "VEHICLE PURCHASED", "VIN", "DATE", "NAME", "EMAIL ADDRESS",
-                "ORIGINAL PRICE", "TOTAL PRICE", "MONTHLY PAYMENT", "ENDING VALUE", "DURATION");
-
-        System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f $%-14.2f %-15s%n",
-                dealership.getAllVehicles().get(vehicleArrayCounter).getMake() + " " +
-                        dealership.getAllVehicles().get(vehicleArrayCounter).getModel(),
-                dealership.getAllVehicles().get(vehicleArrayCounter).getVin(),
-                date,
-                customerName,
-                customerEmail,
-                dealership.getAllVehicles().get(vehicleArrayCounter).getPrice(),
-                leaseContract.getTotalPrice().doubleValue(),
-                leaseContract.getMonthlyPayment().doubleValue(),
-                leaseContract.getExpectedEndingValue().doubleValue(),
-                "36 months");
-
-        dealership.removeVehicle(vin, dealership);
-
+        displayContracts(leaseContract, vehicleArrayCounter, vin);
     }
 
+    // Helper method to display lease contracts and sales contracts
+    public void displayContracts(Contract contract, int vehicleArrayCounter, int vin) {
+        if (contract instanceof SalesContract) {
+
+            System.out.printf("%-20s %-10s %-15s %-20s %-25s %-15s %-15s %-15s %-15s%n",
+                    "VEHICLE PURCHASED", "VIN", "DATE", "NAME", "EMAIL ADDRESS",
+                    "ORIGINAL PRICE", "TOTAL PRICE", "MONTHLY PAYMENT", "DURATION");
+            System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f%n",
+                    dealership.getAllVehicles().get(vehicleArrayCounter).getMake() + " " +
+                            dealership.getAllVehicles().get(vehicleArrayCounter).getModel(),
+                    dealership.getAllVehicles().get(vehicleArrayCounter).getVin(),
+                    contract.getDate(),
+                    contract.getCustomerName(),
+                    contract.getCustomerEmail(),
+                    dealership.getAllVehicles().get(vehicleArrayCounter).getPrice(),
+                    contract.getTotalPrice(),
+                    contract.getMonthlyPayment());
+
+            if (dealership.getAllVehicles().get(vehicleArrayCounter).getPrice() >= 10000)
+            {
+                System.out.printf("%10s","48 months");
+            } else
+            {
+                System.out.printf("%10s", "24 months");
+            }
+            dealership.removeVehicle(vin, dealership);
+        }
+
+        if (contract instanceof LeaseContract) {
+
+            System.out.printf("%-20s %-10s %-15s %-20s %-25s %-15s %-15s %-15s %-15s %-15s%n",
+                    "VEHICLE PURCHASED", "VIN", "DATE", "NAME", "EMAIL ADDRESS",
+                    "ORIGINAL PRICE", "TOTAL PRICE", "MONTHLY PAYMENT", "ENDING VALUE", "DURATION");
+
+            System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f $%-14.2f %-15s%n",
+                    dealership.getAllVehicles().get(vehicleArrayCounter).getMake() + " " +
+                            dealership.getAllVehicles().get(vehicleArrayCounter).getModel(),
+                    dealership.getAllVehicles().get(vehicleArrayCounter).getVin(),
+                    contract.getDate(),
+                    contract.getCustomerName(),
+                    contract.getCustomerEmail(),
+                    dealership.getAllVehicles().get(vehicleArrayCounter).getPrice(),
+                    contract.getTotalPrice().doubleValue(),
+                    contract.getMonthlyPayment().doubleValue(),
+                    ((LeaseContract) contract).getExpectedEndingValue().doubleValue(),
+                    "36 months");
+
+            dealership.removeVehicle(vin, dealership);
+        }
+    }
     // init method that loads the dealership object by creating a dealershipfilemanager object and loading
     // vehicles from inventory.csv
     private void init() {
