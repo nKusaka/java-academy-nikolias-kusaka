@@ -4,6 +4,7 @@ import java.util.*;
 public class UserInterface {
     static Scanner read = new Scanner(System.in);
     private Dealership dealership;
+    static ContractFileManager contractFileManager = new ContractFileManager();
 
     // Default Constructor
     public UserInterface() {
@@ -271,6 +272,8 @@ public class UserInterface {
                 isFinanced);
 
         displayContracts(salesContract, vehicleArrayCounter, vin);
+        contractFileManager.saveContract(salesContract, dealership.getAllVehicles().get(vehicleArrayCounter));
+        dealership.removeVehicle(vin, dealership);
     }
 
     // Calls LeaseContract method to process user request
@@ -305,6 +308,8 @@ public class UserInterface {
                 dealership.getAllVehicles().get(vehicleArrayCounter));
 
         displayContracts(leaseContract, vehicleArrayCounter, vin);
+        contractFileManager.saveContract(leaseContract, dealership.getAllVehicles().get(vehicleArrayCounter));
+        dealership.removeVehicle(vin, dealership);
     }
 
     // Helper method to display lease contracts and sales contracts
@@ -332,7 +337,6 @@ public class UserInterface {
             {
                 System.out.printf("%10s", "24 months");
             }
-            dealership.removeVehicle(vin, dealership);
         }
 
         if (contract instanceof LeaseContract) {
@@ -349,14 +353,13 @@ public class UserInterface {
                     contract.getCustomerName(),
                     contract.getCustomerEmail(),
                     dealership.getAllVehicles().get(vehicleArrayCounter).getPrice(),
-                    contract.getTotalPrice().doubleValue(),
-                    contract.getMonthlyPayment().doubleValue(),
-                    ((LeaseContract) contract).getExpectedEndingValue().doubleValue(),
+                    contract.getTotalPrice(),
+                    contract.getMonthlyPayment(),
+                    ((LeaseContract) contract).getExpectedEndingValue(),
                     "36 months");
-
-            dealership.removeVehicle(vin, dealership);
         }
     }
+
     // init method that loads the dealership object by creating a dealershipfilemanager object and loading
     // vehicles from inventory.csv
     private void init() {
