@@ -3,6 +3,7 @@ package com.pluralsight;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.*;
 
 public class ContractFileManager {
 
@@ -16,7 +17,7 @@ public class ContractFileManager {
                 double recordingFee = 100.00;
                 double processingFee = vehicle.getPrice() > 10000 ? 495.00 : 295.00;
                 String financed = sales.isFinanced() ? "YES" : "NO";
-                double monthlyPayment = sales.isFinanced() ? contract.getMonthlyPayment() : 0.00;
+                BigDecimal monthlyPayment = sales.isFinanced() ? contract.getMonthlyPayment() : BigDecimal.valueOf(0.00);
 
                 writer.write(String.join("|",
                         "SALE",
