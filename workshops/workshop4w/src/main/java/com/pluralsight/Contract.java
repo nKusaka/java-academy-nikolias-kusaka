@@ -1,5 +1,7 @@
 package com.pluralsight;
 import java.math.*;
+import java.util.ArrayList;
+
 public abstract class Contract {
 
     private String date;
