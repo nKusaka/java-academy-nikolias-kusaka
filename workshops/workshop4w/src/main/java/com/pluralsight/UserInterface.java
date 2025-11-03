@@ -5,6 +5,7 @@ public class UserInterface {
     static Scanner read = new Scanner(System.in);
     private Dealership dealership;
     static ContractFileManager contractFileManager = new ContractFileManager();
+    static ArrayList<Contract> contractsList = new ArrayList<>();
 
     // Default Constructor
     public UserInterface() {
@@ -234,7 +235,7 @@ public class UserInterface {
     }
 
     // Calls SalesContract method to process user request
-    public void processGetSalesContract() {
+    public void processGetSalesContract() throws Exception {
         String userInput;
         int vehicleArrayCounter =0;
 
@@ -264,20 +265,21 @@ public class UserInterface {
         }while(!userInput.equalsIgnoreCase("yes") && !userInput.equalsIgnoreCase("no"));
         boolean isFinanced = userInput.equalsIgnoreCase("yes");
 
-        Contract salesContract = new SalesContract
+        SalesContract newContract = new SalesContract
                 (date,
                 customerName,
                 customerEmail,
                 dealership.getAllVehicles().get(vehicleArrayCounter),
                 isFinanced);
 
-        displayContracts(salesContract, vehicleArrayCounter, vin);
-        contractFileManager.saveContract(salesContract, dealership.getAllVehicles().get(vehicleArrayCounter));
+        contractsList.add(newContract);
+        displayContracts(contractsList.get(contractsList.size() - 1), vehicleArrayCounter, vin);
+        contractFileManager.saveContract(contractsList);
         dealership.removeVehicle(vin, dealership);
     }
 
     // Calls LeaseContract method to process user request
-    public void processGetLeaseContract() {
+    public void processGetLeaseContract() throws Exception {
 
         String userInput;
         int vehicleArrayCounter =0;
@@ -301,14 +303,15 @@ public class UserInterface {
         System.out.printf("Enter todays date: ");
         String date = read.nextLine();
 
-        Contract leaseContract = new LeaseContract(
+        LeaseContract newContract = new LeaseContract(
                 date,
                 customerName,
                 customerEmail,
                 dealership.getAllVehicles().get(vehicleArrayCounter));
 
-        displayContracts(leaseContract, vehicleArrayCounter, vin);
-        contractFileManager.saveContract(leaseContract, dealership.getAllVehicles().get(vehicleArrayCounter));
+        contractsList.add(newContract);
+        displayContracts(contractsList.get(contractsList.size() - 1), vehicleArrayCounter, vin);
+        contractFileManager.saveContract(contractsList);
         dealership.removeVehicle(vin, dealership);
     }
 
@@ -342,7 +345,7 @@ public class UserInterface {
         if (contract instanceof LeaseContract) {
 
             System.out.printf("%-20s %-10s %-15s %-20s %-25s %-15s %-15s %-15s %-15s %-15s%n",
-                    "VEHICLE PURCHASED", "VIN", "DATE", "NAME", "EMAIL ADDRESS",
+                    "VEHICLE LEASED", "VIN", "DATE", "NAME", "EMAIL ADDRESS",
                     "ORIGINAL PRICE", "TOTAL PRICE", "MONTHLY PAYMENT", "ENDING VALUE", "DURATION");
 
             System.out.printf("%-20s %-10s %-15s %-20s %-25s $%-14.2f $%-14.2f $%-14.2f $%-14.2f %-15s%n",
