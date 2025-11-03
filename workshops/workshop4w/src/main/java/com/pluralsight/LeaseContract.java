@@ -13,23 +13,23 @@ public class LeaseContract extends Contract {
 
     @Override
     public BigDecimal getMonthlyPayment() {
-
-        BigDecimal rate = new BigDecimal("0.040").divide(new BigDecimal("36"), 10, RoundingMode.HALF_UP);
+        BigDecimal annualRate = new BigDecimal("0.040");
+        BigDecimal monthlyRate = annualRate.divide(new BigDecimal("12"), 10, RoundingMode.HALF_UP);
         int months = 36;
 
         BigDecimal principal = BigDecimal.valueOf(getVehicleSold().getPrice());
 
-        // (1 + r)
-        BigDecimal onePlusRate = BigDecimal.ONE.add(rate);
-
         // (1 + r)^n
-        BigDecimal power = onePlusRate.pow(months);
+        BigDecimal onePlusRatePowN = BigDecimal.ONE.add(monthlyRate).pow(months);
 
-        // denominator: 1 - (1 + r)^(-n)  ==  1 - 1 / (1 + r)^n
-        BigDecimal denominator = BigDecimal.ONE.subtract(BigDecimal.ONE.divide(power, 10, RoundingMode.HALF_UP));
+        // numerator: P * r * (1 + r)^n
+        BigDecimal numerator = principal.multiply(monthlyRate).multiply(onePlusRatePowN);
 
-        // M = P * r / (1 - (1 + r)^-n)
-        return principal.multiply(rate).divide(denominator, 2, RoundingMode.HALF_UP);
+        // denominator: (1 + r)^n - 1
+        BigDecimal denominator = onePlusRatePowN.subtract(BigDecimal.ONE);
+
+        // final monthly payment
+        return numerator.divide(denominator, 2, RoundingMode.HALF_UP);
     }
 
     @Override
