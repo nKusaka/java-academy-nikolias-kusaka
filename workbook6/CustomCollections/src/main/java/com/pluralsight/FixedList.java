@@ -15,7 +15,7 @@ public class FixedList <T> {
             items.add(item);
         }
         else {
-            System.out.println("List is full unable to add item");
+            System.out.println("List is full unable to add item: " + item);
         }
     }
 

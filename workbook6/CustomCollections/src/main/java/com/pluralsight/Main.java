@@ -7,6 +7,7 @@ public class Main {
 
         list.add(3);
         list.add("Nik");
+        list.add(3.1);
 
         for(Object item: list.getItems()) {
             System.out.println(item);
