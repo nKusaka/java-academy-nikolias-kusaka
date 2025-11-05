@@ -7,7 +7,7 @@ public class Main {
         // Create a list to hold Person objects
         List<Person> people = new ArrayList<>();
         Scanner read = new Scanner(System.in);
-        List<Person> matches = new ArrayList<>();
+        List<Person> matches;
 
         // Add 10 Person objects to the list
         people.add(new Person("John", "Smith", 25));
@@ -24,21 +24,26 @@ public class Main {
         System.out.printf("Enter the name of a person you would like to search for first or last: ");
         String userInput = read.nextLine().toLowerCase();
 
-        for (Person person: people) {
-            if (person.getFirstName().toLowerCase().contains(userInput) || person.getLastName().toLowerCase().contains(userInput)) {
-                matches.add(person);
-            }
-        }
+        matches = people.stream()
+                .filter(person -> (person.getFirstName().toLowerCase().contains(userInput)
+                        || person.getLastName().toLowerCase().contains(userInput))).toList();
 
         System.out.println("List of all people matching your search: ");
         for (Person person: matches) {
             System.out.println(person);
-            
-            int averageAge = 0;
-            averageAge += person.getAge();
         }
 
-        matches.sort((a,b) -> a.getAge() - b.getAge());
+        double averageAge = (double) matches.stream()
+                .map(Person::getAge)
+                .reduce(0, (sum, age) -> sum + age)
+                / matches.size();
+
+        matches = matches.stream()
+                .sorted(Comparator.comparing(Person::getAge))
+                .toList();
+
+        System.out.println("The average age of everyone in the list is " + averageAge);
+
         System.out.println("The oldest person in the list is " + matches.get(matches.size() - 1));
 
         System.out.println("The youngest person in the list is " + matches.get(0));
