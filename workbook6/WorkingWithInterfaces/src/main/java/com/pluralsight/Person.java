@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-public class Person implements Comparable {
+public class Person implements Comparable<Person> {
     private String firstName;
     private String lastName;
     private int age;
@@ -11,8 +11,36 @@ public class Person implements Comparable {
         this.age = age;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Person other) {
+        int lastCompare = this.lastName.compareToIgnoreCase(other.lastName);
+        if (lastCompare != 0) {
+            return lastCompare;
+        }
+        return this.firstName.compareToIgnoreCase(other.firstName);
     }
 }
