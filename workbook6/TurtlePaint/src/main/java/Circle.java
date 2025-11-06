@@ -1,18 +1,26 @@
-//import java.awt.*;
-//
-//public class Circle extends Shape {
-//    private double radius;
-//
-//    public Circle(String name, Color color, double thickness, double radius) {
-//        super(name, color, thickness);
-//        this.radius = radius;
-//    }
-//
-//    public void setRadius(double radius) {
-//        this.radius = radius;
-//    }
-//
-//    public double getRadius() {
-//        return radius;
-//    }
-//}
+import java.awt.*;
+import java.awt.geom.Point2D;
+
+public class Circle extends Shape {
+    private int size;
+
+    public Circle(Turtle turtle, Point location, Color color, int border, int size) {
+        super(turtle, location, color, border);
+        this.size = size;
+    }
+
+    @Override
+    public void paint() {
+        turtle.setPenWidth(border);
+        turtle.setColor(color);
+        turtle.penUp();
+        turtle.goTo(location.getX(), location.getY());
+        Point2D startLocation = turtle.getLocation();
+        turtle.penDown();
+
+        for (int i = 0; i < 360; i++) {
+            turtle.forward(size);
+            turtle.turnRight(1);
+        }
+    }
+}
