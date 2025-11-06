@@ -50,7 +50,7 @@ public class Turtle {
     // private GeneralPath trail; // not used
     private Color color;
     private double shellSize;
-    private int pause = 200;
+    private int pause = 0;
 
 
     private static final Color[] base = {
