@@ -15,7 +15,6 @@ public class Circle extends Shape {
         turtle.setColor(color);
         turtle.penUp();
         turtle.goTo(location.getX(), location.getY());
-        Point2D startLocation = turtle.getLocation();
         turtle.penDown();
 
         for (int i = 0; i < 360; i++) {
