@@ -9,6 +9,7 @@ public class Main {
         Scanner read = new Scanner(System.in);
         List<Person> matches;
 
+        System.out.println();.
         // Add 10 Person objects to the list
         people.add(new Person("John", "Smith", 25));
         people.add(new Person("Emily", "Johnson", 30));
