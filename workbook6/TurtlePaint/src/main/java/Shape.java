@@ -1,37 +1,17 @@
 import java.awt.*;
 
 public abstract class Shape {
-    private String name;
-    private Color color;
-    private double thickness;
+    protected Turtle turtle;
+    protected Point location;
+    protected Color color;
+    protected int border;
 
-    public Shape(String name, Color color, double thickness) {
-        this.name = name;
+    public Shape(Turtle turtle, Point location, Color color, int border) {
+        this.turtle = turtle;
+        this.location = location;
         this.color = color;
-        this.thickness = thickness;
+        this.border = border;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public double getThickness() {
-        return thickness;
-    }
-
-    public void setThickness(double thickness) {
-        this.thickness = thickness;
-    }
+    public abstract void paint();
 }
