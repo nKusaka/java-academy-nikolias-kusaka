@@ -1,28 +1,24 @@
 import java.awt.*;
 
 public class Square extends Shape {
-    private double length;
-    private double width;
+    private int size;
 
-    public Square(String name, Color color, double thickness, double length, double width) {
-        super(name, color, thickness);
-        this.length = length;
-        this.width = width;
+    public Square(Turtle turtle, Point location, Color color, int border, int size) {
+        super(turtle, location, color, border);
+        this.size = size;
     }
 
-    public double getLength() {
-        return length;
-    }
+    @Override
+    public void paint() {
+        turtle.setPenWidth(border);
+        turtle.setColor(color);
+        turtle.penUp();
+        turtle.goTo(location.getX(), location.getY());
+        turtle.penDown();
 
-    public void setLength(double length) {
-        this.length = length;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
+        for(int i = 0; i< 4; i++) {
+            turtle.forward(size);
+            turtle.turnRight(90);
+        }
     }
 }
