@@ -19,5 +19,7 @@ public class MainApp
         Shape square = new Square(turtle, start, borderColor, 3, 100);
         square.paint();
 
+        Circle circle = new Circle(turtle,start,borderColor, 3, 1);
+        circle.paint();
     }
 }
