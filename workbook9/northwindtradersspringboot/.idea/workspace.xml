@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="454f4f8f-8f25-4d1b-bad8-7655623fcb07" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/DatabaseConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/JdbcProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demos-teacher/property-manager/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demos-teacher/property-manager/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demos-teacher/property-manager/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demos-teacher/property-manager/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demos-teacher/property-manager/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demos-teacher/property-manager/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demos-teacher/property-manager/src/main/java/com/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demos-teacher/property-manager/src/main/java/com/example/Property.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../demos-teacher/property-manager/src/main/java/com/example/PropertyDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/northwindtradersspringboot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/northwindtradersspringboot/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/NorthwindApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/NorthwindApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/NorthwindtradersspringbootApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/NorthwindtradersspringbootApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/ProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/ProductServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/northwindtradersspringboot/src/main/java/com/pluralsight/northwindtradersspringboot/SimpleProductDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/northwindtradersspringboot/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/northwindtradersspringboot/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "nKusaka"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/nKusaka/java-academy-nikolias-kusaka.git",
+    "accountId": "ef924b41-d2f1-4eb3-bb0b-d55c001fa67d"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="36gdBcsHdV2Jwrph8X1larm5bNv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/PluralSight/java-academy-nikolias-kusaka/workbook9/northwindtradersspringboot",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="454f4f8f-8f25-4d1b-bad8-7655623fcb07" name="Changes" comment="" />
+      <created>1765432013577</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1765432013577</updated>
+    </task>
+    <servers />
+  </component>
+</project>
